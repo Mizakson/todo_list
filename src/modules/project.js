@@ -5,17 +5,18 @@ class Project {
         this.items = [];
     }
 
-    addTask(item) {
-        item = new Task();
-        this.items.push(item);
+    addProject() {
+        const newProject = new Project();
+        this.items.push(newProject);
+        return this.items;
     }
 
-    deleteTask(item) {
-        const index = this.items[item];
+    deleteProject(index) {
         this.items.splice(index, 1);
+        return this.items;
     }
 
-    showItems() {
+    showProjects() {
         return this.items;
     }
 

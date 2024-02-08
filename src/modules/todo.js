@@ -8,4 +8,28 @@ class Task {
         this.status = false;
     }
 
+    changeTitle(title) {
+        this.title = title;
+    }
+
+    changeDescription(description) {
+        this.description = description;
+    }
+
+    changeDueDate(dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    changePriority(priority) {
+        this.priority = priority;
+    }
+
+    changeNotes(notes) {
+        this.notes = notes;
+    }
+
+    completeTask() {
+        this.status = true;
+    }
+
 }

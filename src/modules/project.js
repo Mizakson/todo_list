@@ -6,11 +6,6 @@ class Project extends Task {
         this.items = [];
     }
 
-    edittitle(title) {
-        this.title = title;
-        return title;
-    }
-
     createTask(title, description, dueDate, priority, notes) {
         item = new Task(title, description, dueDate, priority, notes);
         this.items.push(item);

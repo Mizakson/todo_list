@@ -37,6 +37,12 @@ class Project extends Task {
         return this.items[index];
     }
 
+    // auxilary method
+    // don't know if necessary
+    showSpecificTask(index1, index2) {
+        return this.items[index1][index2];
+    }
+
 }
 
 export default Project;

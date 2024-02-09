@@ -1,20 +1,21 @@
 import Task from "./todo.js";
 
 class Project extends Task {
-    constructor(name) {
-        this.name = name;
+    constructor(title, description, dueDate, priority, notes) {
+        super(title, description, dueDate, priority, notes);
         this.items = [];
     }
 
-    editName(name) {
-        this.name = name;
-        return name;
+    edittitle(title) {
+        this.title = title;
+        return title;
     }
 
-    addTask(item) {
+    createTask(title, description, dueDate, priority, notes) {
+        item = new Task(title, description, dueDate, priority, notes);
         this.items.push(item);
         return item;
-    }
+    };
 
     deleteTask(index) {
         this.items.splice(index, 1);

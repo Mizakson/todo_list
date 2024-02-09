@@ -3,6 +3,7 @@ import Task from "./todo.js";
 class Project extends Task {
     constructor(title, description, dueDate, priority, notes) {
         super(title, description, dueDate, priority, notes);
+        this.status = false;
         this.items = [];
     }
 
@@ -17,8 +18,23 @@ class Project extends Task {
         return `Task at index ${index} deleted...`;
     }
 
-    showItems() {
+    showAll() {
         return this.items;
+    }
+
+    addProject(name) {
+        const project = new Project(name);
+        this.items.push(project);
+        return project;
+    }
+
+    deleteProject(index) {
+        this.items.splice(index, 1);
+        return `Project at index ${index} deleted...`;
+    }
+
+    showItem(index) {
+        return this.items[index];
     }
 
 }

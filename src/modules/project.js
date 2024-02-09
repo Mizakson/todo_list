@@ -5,12 +5,13 @@ class Project extends Task {
         super(title, description, dueDate, priority, notes);
         this.status = false;
         this.items = [];
+        this.type = 'project';
     }
 
     createTask(title, description, dueDate, priority, notes) {
-        item = new Task(title, description, dueDate, priority, notes);
+        const item = new Task(title, description, dueDate, priority, notes);
         this.items.push(item);
-        return item;
+        this.showItem(this.items[item]);
     };
 
     deleteTask(index) {

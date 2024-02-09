@@ -6,6 +6,7 @@ class Task {
         this.priority = priority;
         this.notes = notes;
         this.status = false;
+        this.type = 'task';
     }
 
     changeTitle(title) {

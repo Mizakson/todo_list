@@ -22,8 +22,8 @@ class Project extends Task {
         return this.items;
     }
 
-    addProject(name) {
-        const project = new Project(name);
+    addProject(title, description, dueDate, priority, notes) {
+        const project = new Project(title, description, dueDate, priority, notes);
         this.items.push(project);
         return project;
     }

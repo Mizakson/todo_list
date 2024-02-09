@@ -1,6 +1,6 @@
 import Task from "./todo.js";
 
-class Project {
+class Project extends Task {
     constructor(name) {
         this.name = name;
         this.items = [];

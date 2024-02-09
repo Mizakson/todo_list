@@ -1,12 +1,12 @@
-import Project from "./modules/project"
+import Project from "./project.js"
 
 class initialProject extends Project {
     constructor() {
-        super(this.items);
+        super(this.name, this.items);
     }
 
-    addProject() {
-        const project = new Project();
+    addProject(name) {
+        const project = new Project(name);
         this.items.push(project);
         return project;
     }

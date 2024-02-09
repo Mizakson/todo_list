@@ -1,12 +1,17 @@
 import Task from "./todo.js";
 
 class Project {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.items = [];
     }
 
-    addTask() {
-        item = new Task();
+    editName(name) {
+        this.name = name;
+        return name;
+    }
+
+    addTask(item) {
         this.items.push(item);
         return item;
     }

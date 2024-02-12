@@ -3,7 +3,7 @@ import Task from "./modules/todo.js"
 import pageOnLoad from "./modules/interface.js";
 
 const PROJECTS = [];
-const DEFAULT_PROJECT = new Project('default','default project','N/A','N/A','edit');
+const DEFAULT_PROJECT = new Project('default','default project description','8/8/28','low','default project notes');
 
 PROJECTS.push(DEFAULT_PROJECT);
 
@@ -20,9 +20,51 @@ function buttonEvents() {
     })
 }
 
+function render() {
+    const content = document.querySelector('#content');
+
+    for (let i = 0; i < PROJECTS.length; i++) {
+        let item = PROJECTS[i];
+        if (item.type === 'project') {
+            let projectEl = document.createElement('div');
+            projectEl.classList.add('project');
+            projectEl.innerHTML = `
+            <div class='project-header'>
+                <h3 class='project-title'>${item.title}</h3>
+                <p class='project-dueDate'>${item.dueDate}</p>
+            </div>
+            <div class='project-info'>
+                <p class='project-description'>${item.description}</p>
+                <p class='project-priority'>${item.priority}</p>
+                <p class='project-notes'>${item.notes}</p>
+            </div>
+            `
+            content.appendChild(projectEl);
+
+        } else if (item.type === 'task') {
+            let taskEl = document.createElement('div');
+            taskEl.classList.add('task');
+            taskEl.innerHTML = `
+            <div class='task-header>
+                <h2 class='task-title'>${item.title}</h2>
+                <p class='task-dueDate'>${item.dueDate}</p>
+            </div>
+            <div class='task-info'>
+                <p class='task-description'>${item.description}</p>
+                <p class='task-priority'>${item.priority}</p>
+                <p class='task-notes'>${item.notes}</p>
+            </div>
+            `
+            content.appendChild(taskEl);
+        };
+
+    }
+}
+
 function init() {
     pageOnLoad();
     buttonEvents();
+    render();
 }
 
 init();

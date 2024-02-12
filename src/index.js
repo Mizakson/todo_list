@@ -8,13 +8,21 @@ const DEFAULT_PROJECT = new Project('default','default project','N/A','N/A','edi
 PROJECTS.push(DEFAULT_PROJECT);
 
 DEFAULT_PROJECT.createTask('task1','first task','4/4/26','low','edit');
-console.log(PROJECTS);
-console.log(DEFAULT_PROJECT.items[0]);
 
 // add button events
 
+function buttonEvents() {
+    document.addEventListener("click", function(e) {
+        const target = e.target.closest("#home");
+        if(target) {
+            console.log('home btn clicked');
+        }
+    })
+}
+
 function init() {
     pageOnLoad();
+    buttonEvents();
 }
 
 init();

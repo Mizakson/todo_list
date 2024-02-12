@@ -31,6 +31,20 @@ function pageOnLoad() {
 
     body.appendChild(content);
 
+    const toDoTitle = document.createElement('h2');
+    toDoTitle.innerHTML = 'What to do?...';
+    content.appendChild(toDoTitle);
+
+    const nav = document.createElement('nav');
+
+    // return to all projects
+    const homeBtn = document.createElement('button');
+    homeBtn.id = 'home';
+    homeBtn.innerHTML = 'Home';
+    nav.appendChild(homeBtn);
+
+    content.appendChild(nav);
+
 };
 
 export default pageOnLoad;

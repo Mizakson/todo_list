@@ -43,6 +43,11 @@ function pageOnLoad() {
     homeBtn.innerHTML = 'Home';
     nav.appendChild(homeBtn);
 
+    const addItemBtn = document.createElement('button');
+    addItemBtn.id = 'add';
+    addItemBtn.innerHTML = '+';
+    nav.appendChild(addItemBtn);
+
     content.appendChild(nav);
 
 };

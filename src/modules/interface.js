@@ -2,9 +2,12 @@ import Task from "./todo.js";
 import Project from "./project.js";
 
 function pageOnLoad() {
+
+    // initial page load
+    // title text and project description
     const body = document.querySelector('body');
     const titleContainer = document.createElement('div');
-    titleContainer.classList.add('title');
+    titleContainer.id = 'title';
 
     const titleText = document.createElement('h1');
     titleText.innerHTML = 'ToDo List';
@@ -19,6 +22,14 @@ function pageOnLoad() {
     titleContainer.appendChild(projectNumber);
     
     body.appendChild(titleContainer);
+
+
+    // create content section
+    // will contain projects, tasks
+    const content = document.createElement('div');
+    content.id = 'content';
+
+    body.appendChild(content);
 
 };
 

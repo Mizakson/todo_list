@@ -1,0 +1,44 @@
+body {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    padding: 15px;
+}
+
+#header {
+    grid-column: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#header > #nav {
+    text-align: inherit;
+    padding-top: 50px;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    gap: 15px;
+}
+
+#content-header {
+    text-align: center;
+}
+
+#display {
+    display: grid;
+}

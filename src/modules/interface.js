@@ -100,5 +100,11 @@ function showItem(item) {
         };            
 };
 
+function render(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        let item = arr[i];
+        showItem(item);
+    }; 
+}
 
-export default pageOnLoad;
+export default { pageOnLoad, createTitle, createContent, createNav, render } ;

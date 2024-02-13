@@ -1,6 +1,6 @@
 import Project from "./modules/project.js"
 import Task from "./modules/todo.js"
-import pageOnLoad from "./modules/interface.js";
+import * as ui from "./modules/interface.js";
 
 const PROJECTS = [];
 const DEFAULT_PROJECT = new Project('default','default project description','8/8/28','low','default project notes');
@@ -21,7 +21,7 @@ function buttonEvents() {
         const target = e.target.closest("#home");
         if(target) {
             clearBody();
-            render();
+            ui.default.render(PROJECTS);
             console.log(PROJECTS);
         }
     })
@@ -42,19 +42,15 @@ function buttonEvents() {
     })
 }
 
-function render() {
-    
-}
-
 
 function emptyDefaultProjects() {
     PROJECTS.length = 0;
 }
 
 function init() {
-    pageOnLoad();
+    ui.default.pageOnLoad();
     buttonEvents();
-    render();
+    ui.default.render(PROJECTS);
 }
 
 init();

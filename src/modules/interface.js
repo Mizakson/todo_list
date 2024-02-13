@@ -34,6 +34,8 @@ function createHeader() {
     navContainer.appendChild(homeBtn);
 
     header.appendChild(navContainer);
+
+    body.appendChild(header);
 };
 
 

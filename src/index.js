@@ -7,7 +7,7 @@ const TASKS = [];
 
 // default data, 1 proj + 1 task
 const INITIAL_PRROJECT = new Project('PROJ1','DESC','DATE','PRIO','NOTES');
-const INTITAL_TASK = new Task('TODO1','DESC','DATE','PRIO','NOTES');
+const INTITAL_TASK = new Task('TTASK1','DESC','DATE','PRIO','NOTES');
 TASKS.push(INITIAL_PRROJECT);
 TASKS.push(INTITAL_TASK);
 

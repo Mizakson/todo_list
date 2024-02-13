@@ -38,7 +38,6 @@ function createHeader() {
     body.appendChild(header);
 };
 
-
 function createContent() {
     const contentContainer = document.createElement('div');
     contentContainer.id = 'content';

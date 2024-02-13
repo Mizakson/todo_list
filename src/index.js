@@ -22,6 +22,7 @@ function buttonEvents() {
         if(target) {
             clearBody();
             render();
+            console.log(PROJECTS);
         }
     })
     // document.addEventListener("click", function(e) {
@@ -35,6 +36,8 @@ function buttonEvents() {
         const target = e.target.closest("#clear");
         if(target) {
             clearBody();
+            emptyDefaultProjects();
+            console.log(PROJECTS);
         }
     })
 }
@@ -78,6 +81,10 @@ function render() {
         };
 
     }
+}
+
+function emptyDefaultProjects() {
+    PROJECTS.length = 0;
 }
 
 function init() {

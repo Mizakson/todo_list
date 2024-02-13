@@ -1,6 +1,9 @@
 const body = document.querySelector('body');
 
-function createTitle() {
+function createHeader() {
+    const header = document.createElement('div');
+
+    // title creation
     const titleContainer = document.createElement('div');
     titleContainer.id = 'title';
     
@@ -17,10 +20,10 @@ function createTitle() {
     aboutText.innerText = 'A program by Mizakson';
     titleContainer.appendChild(aboutText);
 
-    body.appendChild(titleContainer);
-};
+    header.appendChild(titleContainer);
 
-function createNav() {
+
+    // nav creation
     const navContainer = document.createElement('div');
     navContainer.id = 'nav';
 
@@ -30,8 +33,9 @@ function createNav() {
 
     navContainer.appendChild(homeBtn);
 
-    body.appendChild(navContainer);
+    header.appendChild(navContainer);
 };
+
 
 function createContent() {
     const contentContainer = document.createElement('div');
@@ -48,8 +52,7 @@ function createContent() {
 };
 
 function pageOnLoad() {
-    createTitle();
-    createNav();
+    createHeader();
     createContent();
 };
 

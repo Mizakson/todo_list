@@ -18,7 +18,7 @@ function buttonEvents() {
     document.addEventListener("click", function(e) {
         const target = e.target.closest("#clear");
         if(target) {
-            console.tog('clear btn clicked');
+            console.log('clear btn clicked');
         }
     });
 }

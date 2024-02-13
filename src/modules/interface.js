@@ -57,9 +57,18 @@ function createContent() {
     body.appendChild(contentContainer);
 };
 
+function createProjectDisplay() {
+    const projectDisplay = document.createElement('div');
+    projectDisplay.id = 'display';
+
+    const content = document.querySelector('#content');
+    content.appendChild(projectDisplay);
+}
+
 function pageOnLoad() {
     createHeader();
     createContent();
+    createProjectDisplay();
 };
 
 export default pageOnLoad;

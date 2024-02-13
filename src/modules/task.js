@@ -1,4 +1,4 @@
-class Todo {
+class Task {
     constructor(title, description, dueDate, priority, notes) {
         this.title = title;
         this.description = description;
@@ -6,15 +6,13 @@ class Todo {
         this.priority = priority;
         this.notes = notes;
         this.type = 'task';
+        this.status = false;
+    };
+
+    testMethod() {
+        return 'test';
     };
 
 };
 
-class Project extends Todo {
-    constructor(title, description, dueDate, priority, notes) {
-        super(title, description, dueDate, priority, notes);
-        this.type = 'project';
-        this.items = [];
-    };
-    
-}
+export default Task;

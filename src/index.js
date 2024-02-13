@@ -16,6 +16,13 @@ function buttonEvents() {
     });
 
     document.addEventListener("click", function(e) {
+        const target = e.target.closest("#add");
+        if(target) {
+            console.log('add btn clicked');
+        }
+    });
+
+    document.addEventListener("click", function(e) {
         const target = e.target.closest("#clear");
         if(target) {
             console.log('clear btn clicked');

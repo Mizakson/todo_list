@@ -2,13 +2,13 @@ const body = document.querySelector('body');
 
 function createHeader() {
     const header = document.createElement('div');
+    header.id = 'header'
 
     // title creation
     const titleContainer = document.createElement('div');
     titleContainer.id = 'title';
     
     const mainText = document.createElement('h1');
-    mainText.classList.add('header');
     mainText.innerText = 'ToDo List';
     titleContainer.appendChild(mainText);
 
@@ -44,7 +44,6 @@ function createContent() {
     contentContainer.id = 'content';
 
     const whatToDo = document.createElement('h1');
-    whatToDo.classList.add('header');
 
     whatToDo.innerText = 'What to do?...';
 

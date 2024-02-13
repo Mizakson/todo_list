@@ -24,6 +24,13 @@ function buttonEvents() {
             render();
         }
     })
+    // document.addEventListener("click", function(e) {
+    //     const target = e.target.closest("#add");
+    //     if (target) {
+    //         showTaskForm();
+    //     }
+    // })
+
     document.addEventListener("click", function(e) {
         const target = e.target.closest("#clear");
         if(target) {

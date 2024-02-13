@@ -40,9 +40,14 @@ function pageOnLoad() {
     homeBtn.innerHTML = 'Home';
     nav.appendChild(homeBtn);
 
+    const addBtn = document.createElement('button');
+    addBtn.id = 'add';
+    addBtn.innerHTML = '+';
+    nav.appendChild(addBtn);
+
     const clearItemBtn = document.createElement('button');
     clearItemBtn.id = 'clear';
-    clearItemBtn.innerHTML = 'X';
+    clearItemBtn.innerHTML = 'clear all tasks';
     nav.appendChild(clearItemBtn);
 
     content.appendChild(nav);

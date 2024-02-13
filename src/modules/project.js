@@ -11,7 +11,7 @@ class Project extends Task {
     createTask(title, description, dueDate, priority, notes) {
         const item = new Task(title, description, dueDate, priority, notes);
         this.items.push(item);
-        this.showItem(this.items[item]);
+        return this.items[item];
     };
 
     deleteTask(index) {

@@ -64,47 +64,4 @@ function createNav() {
     content.appendChild(projectDisplay);
 };
 
-function showItem(item) {
-    const display = document.querySelector('#display');
-        if (item.type === 'project') {
-            let projectEl = document.createElement('div');
-            projectEl.classList.add('project');
-            projectEl.innerHTML = `
-            <div class='project-header'>
-                <h3 class='project-title'>${item.title}</h3>
-                <p class='project-dueDate'>${item.dueDate}</p>
-            </div>
-            <div class='project-info'>
-                <p class='project-description'>${item.description}</p>
-                <p class='project-priority'>${item.priority}</p>
-                <p class='project-notes'>${item.notes}</p>
-            </div>
-            `
-            display.appendChild(projectEl);
-
-        } else if (item.type === 'task') {
-            let taskEl = document.createElement('div');
-            taskEl.classList.add('task');
-            taskEl.innerHTML = `
-            <div class='task-header>
-                <h2 class='task-title'>${item.title}</h2>
-                <p class='task-dueDate'>${item.dueDate}</p>
-            </div>
-            <div class='task-info'>
-                <p class='task-description'>${item.description}</p>
-                <p class='task-priority'>${item.priority}</p>
-                <p class='task-notes'>${item.notes}</p>
-            </div>
-            `
-            display.appendChild(taskEl);
-        };            
-};
-
-function render(arr) {
-    for (let i = 0; i < arr.length; i++) {
-        let item = arr[i];
-        showItem(item);
-    }; 
-}
-
-export default { pageOnLoad, createTitle, createContent, createNav, render } ;
+export default { pageOnLoad, createContent, createNav, createTitle };

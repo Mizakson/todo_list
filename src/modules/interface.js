@@ -31,7 +31,12 @@ function createHeader() {
     homeBtn.id = 'home';
     homeBtn.innerText = 'Home';
 
+    const addBtn = document.createElement('button');
+    addBtn.classList.add('add');
+    addBtn.innerText = '+';
+
     navContainer.appendChild(homeBtn);
+    navContainer.appendChild(addBtn);
 
     header.appendChild(navContainer);
 

@@ -1,8 +1,13 @@
-function pageOnLoad() {
+// only global var
+const body = document.querySelector('body');
 
-    // initial page load
-    // title text and project description
-    const body = document.querySelector('body');
+function pageOnLoad() {
+    createTitle();
+    createContent();
+    createNav();
+};
+
+function createTitle() {
     const titleContainer = document.createElement('div');
     titleContainer.id = 'title';
 
@@ -19,10 +24,9 @@ function pageOnLoad() {
     titleContainer.appendChild(projectNumber);
     
     body.appendChild(titleContainer);
+};
 
-
-    // create content section
-    // will contain projects, tasks
+function createContent() {
     const content = document.createElement('div');
     content.id = 'content';
 
@@ -31,10 +35,12 @@ function pageOnLoad() {
     const toDoTitle = document.createElement('h2');
     toDoTitle.innerHTML = 'What to do?...';
     content.appendChild(toDoTitle);
+};
 
+function createNav() {
     const nav = document.createElement('nav');
+    const content = document.querySelector('#content');
 
-    // return to all projects
     const homeBtn = document.createElement('button');
     homeBtn.id = 'home';
     homeBtn.innerHTML = 'Home';
@@ -56,7 +62,6 @@ function pageOnLoad() {
     projectDisplay.id = 'display';
 
     content.appendChild(projectDisplay);
-
 };
 
 export default pageOnLoad;

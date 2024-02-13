@@ -3,9 +3,13 @@ import Task from "./modules/todo.js"
 import * as ui from "./modules/interface.js";
 
 const PROJECTS = [];
-const DEFAULT_PROJECT = new Project('default','default project description','8/8/28','low','default project notes');
+const DEFAULT_PROJECT = new Project('defaultProj','default project description','8/8/28','low','default project notes');
+const DEFAULT_TASK = new Task('defaultTask', 'default task description', '8/8/28','low','default task notes');
 
 PROJECTS.push(DEFAULT_PROJECT);
+PROJECTS.push(DEFAULT_TASK);
+
+console.log(PROJECTS);
 
 function buttonEvents() {
     document.addEventListener("click", function(e) {

@@ -64,4 +64,4 @@ function createNav() {
     content.appendChild(projectDisplay);
 };
 
-export default { pageOnLoad, createContent, createNav, createTitle };
+export default { pageOnLoad };

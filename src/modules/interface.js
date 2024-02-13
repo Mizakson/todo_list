@@ -40,12 +40,17 @@ function pageOnLoad() {
     homeBtn.innerHTML = 'Home';
     nav.appendChild(homeBtn);
 
-    const addItemBtn = document.createElement('button');
-    addItemBtn.id = 'add';
-    addItemBtn.innerHTML = '+';
-    nav.appendChild(addItemBtn);
+    const clearItemBtn = document.createElement('button');
+    clearItemBtn.id = 'clear';
+    clearItemBtn.innerHTML = 'X';
+    nav.appendChild(clearItemBtn);
 
     content.appendChild(nav);
+
+    const projectDisplay = document.createElement('div');
+    projectDisplay.id = 'display';
+
+    content.appendChild(projectDisplay);
 
 };
 

@@ -11,17 +11,29 @@ DEFAULT_PROJECT.createTask('task1','first task','4/4/26','low','edit');
 
 // add button events
 
+function clearBody() {
+    const content = document.querySelector('#display');
+    content.innerHTML = '';
+}
+
 function buttonEvents() {
     document.addEventListener("click", function(e) {
         const target = e.target.closest("#home");
         if(target) {
-            console.log('home btn clicked');
+            clearBody();
+            render();
+        }
+    })
+    document.addEventListener("click", function(e) {
+        const target = e.target.closest("#clear");
+        if(target) {
+            clearBody();
         }
     })
 }
 
 function render() {
-    const content = document.querySelector('#content');
+    const display = document.querySelector('#display');
 
     for (let i = 0; i < PROJECTS.length; i++) {
         let item = PROJECTS[i];
@@ -39,7 +51,7 @@ function render() {
                 <p class='project-notes'>${item.notes}</p>
             </div>
             `
-            content.appendChild(projectEl);
+            display.appendChild(projectEl);
 
         } else if (item.type === 'task') {
             let taskEl = document.createElement('div');
@@ -55,7 +67,7 @@ function render() {
                 <p class='task-notes'>${item.notes}</p>
             </div>
             `
-            content.appendChild(taskEl);
+            display.appendChild(taskEl);
         };
 
     }

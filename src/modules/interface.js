@@ -43,11 +43,16 @@ function createContent() {
     const contentContainer = document.createElement('div');
     contentContainer.id = 'content';
 
+    const contentHeader = document.createElement('div');
+    contentHeader.id = 'content-header';
+
     const whatToDo = document.createElement('h1');
 
     whatToDo.innerText = 'What to do?...';
 
-    contentContainer.appendChild(whatToDo);
+    contentHeader.appendChild(whatToDo);
+
+    contentContainer.appendChild(contentHeader);
 
     body.appendChild(contentContainer);
 };

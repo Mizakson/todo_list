@@ -5,7 +5,8 @@ function createTitle() {
     titleContainer.id = 'title';
     
     const mainText = document.createElement('h1');
-    mainText.classList.add('main header');
+    mainText.classList.add('header');
+    mainText.innerText = 'ToDo List';
     titleContainer.appendChild(mainText);
 
     const projNumber = document.createElement('p');
@@ -23,11 +24,11 @@ function createNav() {
     const navContainer = document.createElement('div');
     navContainer.id = 'nav';
 
-    const homeLink = document.createElement('a');
-    homeLink.id = 'home';
-    homeLink.innerText = 'Home';
+    const homeBtn = document.createElement('button');
+    homeBtn.id = 'home';
+    homeBtn.innerText = 'Home';
 
-    navContainer.appendChild(homeLink);
+    navContainer.appendChild(homeBtn);
 
     body.appendChild(navContainer);
 };
@@ -37,7 +38,7 @@ function createContent() {
     contentContainer.id = 'content';
 
     const whatToDo = document.createElement('h1');
-    whatToDo.classList.add('content header');
+    whatToDo.classList.add('header');
 
     whatToDo.innerText = 'What to do?...';
 

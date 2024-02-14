@@ -74,3 +74,19 @@ button {
     grid-column: 7 / 7;
     margin-right: 15px;
 }
+
+fieldset {
+    border-style: none;
+    gap: 5px;
+}
+
+form, fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    gap: 15px;
+}

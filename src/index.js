@@ -33,9 +33,13 @@ function mainRender() {
         }; 
     };
 
-function showAddForm() {
+function clearDisplay() {
     const display = document.querySelector('#display');
     display.innerHTML = '';
+}
+
+function showAddForm() {
+    const display = document.querySelector('#display');
     
     const form = document.createElement('form');
     form.id = 'add-form';
@@ -49,11 +53,11 @@ function showAddForm() {
     </fieldset>
     <fieldset>
         <label for='description'>Description</label>
-        <input type='text' name='description' placeholder='Outline key points for upcoming conference...' maxlength=250>
+        <input type='text' id='description' name='description' placeholder='Outline key points for upcoming conference...' maxlength=250>
     </fieldset>
     <fieldset>
         <label for='dueDate'>Due Date</label>
-        <input type='date' name='dueDate'>
+        <input id='dueDate' type='date' name='dueDate'>
     </fieldset>
     <fieldset>
         <select id='priority'>
@@ -64,7 +68,7 @@ function showAddForm() {
     </fieldset>
     <fieldset>
         <label for='notes'>Notes</label>
-        <input type='text' name='notes' placeholder='Review X, Add Y...' maxlength=250>
+        <input type='text' id='notes' name='notes' placeholder='Review X, Add Y...' maxlength=250>
     </fieldset>
     <fieldset>
         <button type='submit' id='submit-item'>Add</button>
@@ -74,9 +78,20 @@ function showAddForm() {
 
 };
 
+function buttonEvents() {
+    document.addEventListener("click", function(e) {
+        const target = e.target.closest('#main-add');
+        if (target) {
+            clearDisplay();
+            showAddForm();
+        }
+    })
+}
+
 function init() {
     pageOnLoad();
     mainRender();
+    buttonEvents();
 };
 
 init();

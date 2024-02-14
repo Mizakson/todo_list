@@ -24,9 +24,12 @@ function mainRender() {
         itemEl.classList.add(`item-${i}`);
         itemEl.innerHTML = `
         <div class='item-header'>
-            <p class='item-title'><em>${item.title}:</em></p> 
+            <p class='item-title'><em>${item.title}</em></p> 
             <p class='item-info'>${item.type} -- ${item.dueDate}</p> 
-            <button class='edit-btn'>edit</button>
+            <div class='button-container'>
+                <button class='edit-btn'>edit</button>
+                <button class='delete-btn-${i}'>X</button>
+            </div>
         </div>
             `;
             display.appendChild(itemEl);

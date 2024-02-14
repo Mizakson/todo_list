@@ -31,12 +31,12 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
     gap: 15px;
 }
 
 #content-header {
     text-align: center;
+    padding-bottom: 40px;
 }
 
 #nav {
@@ -53,4 +53,25 @@ button {
 
 #display {
     display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    gap: 10px;
+}
+
+.item-header {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr;
+    gap: 15px;
+}
+
+.item-title {
+    grid-column: 1 / span 1;
+}
+
+.item-info {
+    grid-column: 3 / span 3;
+}
+
+.edit-btn {
+    grid-column: 7 / 7;
+    margin-right: 15px;
 }

@@ -33,6 +33,7 @@ function createHeader() {
 
     const addBtn = document.createElement('button');
     addBtn.classList.add('add');
+    addBtn.id = 'main-add';
     addBtn.innerText = '+';
 
     navContainer.appendChild(homeBtn);

@@ -54,7 +54,7 @@ function showAddForm() {
     </fieldset>
     <fieldset>
         <label for='description'>Description: </label>
-        <input type='text' id='description' name='description' placeholder='Outline key points for upcoming conference...' maxlength=250>
+        <textarea id='description' name='description' placeholder='Outline key points for upcoming conference...' rows=10 cols=30 maxlength=100></textarea>
     </fieldset>
     <fieldset>
         <label for='dueDate'>Due Date: </label>
@@ -70,7 +70,7 @@ function showAddForm() {
     </fieldset>
     <fieldset>
         <label for='notes'>Notes: </label>
-        <input type='text' id='notes' name='notes' placeholder='Review X, Add Y...' maxlength=250>
+        <textarea id='notes' name='notes' placeholder='Review X, Add Y...' rows=10 cols=30 maxlength=250></textarea>
     </fieldset>
     <fieldset>
         <button type='submit' id='submit-item'>Add</button>

@@ -21,11 +21,13 @@ function mainRender() {
     for (let i = 0; i < TASKS.length; i++) {
         let item = arr[i];
         let itemEl = document.createElement('div');
-        itemEl.innerHTML = `<div class='item-${i}'></div>`;
-            const shortDescription = document.createElement('p');
-            shortDescription.classList.add('item-header');
-            shortDescription.innerHTML = `<em>${item.title}:</em> ${item.type} -- ${item.dueDate} <button class='edit-btn${i}'>edit</button>`;
-            itemEl.appendChild(shortDescription);
+        itemEl.innerHTML = `<div class='item-${i}'>
+        <div class='item-${i}-header'>
+            <p class='title-${i}'><em>${item.title}:</em></p> 
+            <p class='info-${i}'>${item.type} -- ${item.dueDate}</p> 
+            <button class='edit-btn${i}'>edit</button>
+            </div>
+        </div>`;
             display.appendChild(itemEl);
         }; 
     };

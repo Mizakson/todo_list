@@ -85,6 +85,14 @@ function buttonEvents() {
             clearDisplay();
             showAddForm();
         }
+    });
+
+    document.addEventListener("click", function(e) {
+        const target = e.target.closest('#home');
+        if (target) {
+            clearDisplay();
+            mainRender();
+        }
     })
 }
 

@@ -1,6 +1,6 @@
 // main item class
 
-class Item{
+class Item {
 
 };
 

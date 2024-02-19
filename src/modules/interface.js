@@ -19,7 +19,6 @@ function createBasicEl(tag, cls, idName, text) {
     return el;
 };
 
-
 function createHeader() {
     const body = document.querySelector('body');
 

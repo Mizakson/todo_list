@@ -5,6 +5,9 @@ import Project from "./modules/project.js";
 // main arr that store all projects, tasks
 const TASKS = [];
 
+const DEFAULT_DATA = new Project('DEFAULT','DESCRIPTION','2024-06-07', 'low', '');
+TASKS.push(DEFAULT_DATA);
+
 function addItem() {
     
     const $type = document.getElementById('type');
@@ -56,11 +59,10 @@ function addItem() {
 
 }
 
-function mainRender() {
+function mainRender(arr) {
     const display = document.querySelector('#display');
-    let arr = TASKS;
 
-    for (let i = 0; i < TASKS.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
         let item = arr[i];
         let itemEl = document.createElement('div');
         itemEl.classList.add(`item-${i}-card`);
@@ -129,13 +131,10 @@ function showAddForm() {
 
 };
 
-function subRender(index) {
+function subRender(arr, index) {
     const display = document.querySelector('#display');
-    clearDisplay();
-    index = TASKS[index];
-    
-
-}
+    const item = arr[index];
+};
 
 function buttonEvents() {
     document.addEventListener("click", function(e) {
@@ -164,11 +163,11 @@ function buttonEvents() {
     });
 
 
-}
+};
 
 function init() {
     pageOnLoad();
-    mainRender();
+    mainRender(TASKS);
     buttonEvents();
 };
 

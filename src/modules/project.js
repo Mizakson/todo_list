@@ -1,15 +1,11 @@
-import Item from "./item.js";
-
 // project class and methods
 
-class Project extends Item {
+import Task from "./task";
+
+class Project extends Task {
     constructor(name, description, dueDate, priority, notes) {
-        super(name);
+        super(name, description, dueDate, priority, notes);
         this.type = 'project';
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-        this.notes = notes;
         this.items = [];
     }
 };

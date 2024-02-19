@@ -5,7 +5,7 @@ import Item from "./item.js";
 
 class Task extends Item {
     constructor(name, description, dueDate, priority, notes) {
-        super(name);
+        super(name, type);
         this.type = 'task';
         this.description = description;
         this.dueDate = dueDate;

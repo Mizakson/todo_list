@@ -4,8 +4,7 @@ import Item from "./item.js";
 
 class Project extends Item {
     constructor(name, description, dueDate, priority, notes) {
-        super(name);
-        this.type = 'project';
+        super(name, type);
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;

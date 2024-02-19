@@ -13,23 +13,23 @@ class Task {
     }
 
     editName(name) {
-        name = this.name;
+        this.name = name;
     }
 
     editDescription(description) {
-        description = this.description;
+        this.description = description;
     }
 
     editDueDate(dueDate) {
-        dueDate = this.dueDate;
+        this.dueDate = dueDate
     }
 
     editPriority(priority) {
-        priority = this.priority;
+        this.priority = priority;
     }
 
     editNotes(notes) {
-        notes = this.notes;
+        this.notes = notes;
     }
 
     toggleStatus() {

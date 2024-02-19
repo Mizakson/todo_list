@@ -63,7 +63,7 @@ function mainRender() {
     for (let i = 0; i < TASKS.length; i++) {
         let item = arr[i];
         let itemEl = document.createElement('div');
-        itemEl.classList.add(`item-${i}`);
+        itemEl.classList.add(`item-${i}-card`);
         itemEl.innerHTML = `
         <div class='item-header'>
             <p class='item-title'><em>${item.title}</em></p> 
@@ -128,6 +128,14 @@ function showAddForm() {
     display.appendChild(form);
 
 };
+
+function subRender(index) {
+    const display = document.querySelector('#display');
+    clearDisplay();
+    index = TASKS[index];
+    
+
+}
 
 function buttonEvents() {
     document.addEventListener("click", function(e) {

@@ -134,6 +134,12 @@ function showAddForm() {
 function subRender(arr, index) {
     const display = document.querySelector('#display');
     const item = arr[index];
+
+    if (item.type == 'task') {
+        // render full task
+    } else if (item.type = 'project') {
+        // render full project
+    }
 };
 
 function buttonEvents() {

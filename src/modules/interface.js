@@ -41,4 +41,4 @@ function pageOnLoad() {
     createHeader();
 };
 
-export default pageOnLoad;
+export default { pageOnLoad, createBasicEl };

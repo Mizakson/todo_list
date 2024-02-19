@@ -9,7 +9,6 @@ class Item {
 
     editName(name) {
         name = this.name;
-        return this.name;
     }
 
     toggleStatus() {

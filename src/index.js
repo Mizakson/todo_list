@@ -14,23 +14,65 @@ function addFormItem() {
     const $name = document.querySelector('#name').value; 
     const $date = document.querySelector('#date').value; 
     const $priority = document.querySelector('#priority').value; 
-    
+
     if ($type = 'project') {
         item = new Project($name, defaultText, $date, $priority, defaultText);
     } else if ($type = 'task') {
         item = new Task($name, defaultText, $date, $priority, defaultText);
     };
 
-    DEFAULT_PROJECT.additem(item);
+    DEFAULT_PROJECT.items.push(item);
     console.log(DEFAULT_PROJECT.items);
 
 }
 
 function clearForm() {
-    document.getElementById('name').value = '';
-    document.getElementById('date').value = '';
+    const form = document.querySelector('#item-form');
+    form.innerHTML = '';
+    createBlankForm();
 }
 
+function createBlankForm() {
+    const body = document.querySelector('body');
+    
+    const formDisplay = createBasicEl('div','form-display','','');
+    const form = createBasicEl('form','item-form','','');
+
+    form.innerHTML += `
+    <h2 id='form-title'>What to do?...</h2>
+    <fieldset>
+        <label for='type'>Type: </label>
+            <select name='type' id='type'>
+                <option value='project'>Project</option>
+                <option value='task'>Task</option>
+            </select>        
+    </fieldset>
+    <fieldset>
+        <label for='name'>Name: </label>
+        <input type='text' id='name' maxlength='75' placeholder=' -- Enter text here -- '>
+    </fieldset>
+    <fieldset>
+        <label for='date'>Date: </label>
+        <input type='text' id='date' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+    </fieldset>
+    <fieldset>
+        <label for='priority'>Priority: </label>
+            <select name='priority' id='priority'>
+                <option value='low'>Low</option>
+                <option value='mid'>Mid</option>
+                <option value='high'>High</option>
+            </select>
+    </fieldset>
+    <fieldset>
+    <button id='form-submit' type='submit'>Add item</button>
+    </fieldset>
+
+    `
+
+    formDisplay.appendChild(form);
+    body.appendChild(formDisplay);
+
+};
 
 function buttonEvents() {
     document.addEventListener('click', function(e) {

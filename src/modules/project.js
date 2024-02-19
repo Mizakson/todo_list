@@ -1,6 +1,6 @@
 // project class and methods
 
-import Task from "./task";
+import Task from "./task.js";
 
 class Project extends Task {
     constructor(name, description, dueDate, priority, notes) {
@@ -16,7 +16,6 @@ class Project extends Task {
     deleteItem(index) {
         this.items.splice(index, 1);
     }
-
 
 };
 

@@ -3,8 +3,6 @@ import Task from "./modules/task.js";
 import pageOnLoad from "./modules/interface.js";
 
 const DEFAULT_PROJECT = new Project('DEFAULT','N/A','N/A','N/A','N/A','N/A');
-let TASK1 = new Task('Go food shopping', '', '2024-06-07', 'mid', 'buy apples, milk');
-DEFAULT_PROJECT.additem(TASK1);
 
 function addFormItem() {
     const defaultText = 'Edit me...';
@@ -38,7 +36,7 @@ function addFormItem() {
         const priority = $priority.value;
 
 
-        const item = new Task(title, defaultText, dueDate, priority, defaultText);
+        const item = new Task(name, defaultText, dueDate, priority, defaultText);
         DEFAULT_PROJECT.items.push(item);
     };
 
@@ -47,8 +45,6 @@ function addFormItem() {
 }
 
 function clearForm() {
-    const form = document.querySelector('#item-form');
-    form.innerHTML = '';
     createBlankForm();
 }
 
@@ -95,18 +91,21 @@ function createBlankForm() {
 };
 
 function buttonEvents() {
-    document.addEventListener('onclick', function(e) {
+    document.addEventListener('click', function(e) {
+        e.preventDefault();
         const target = e.target.closest('#form-submit');
         if (target) {
+            e.preventDefault();
             addFormItem();
+            clearForm();
         }
     })
 }
 
 
 function init() {
-    buttonEvents();
     pageOnLoad();
+    buttonEvents();
 }
 
 init();

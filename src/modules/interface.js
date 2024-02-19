@@ -20,7 +20,7 @@ function createBasicEl(tag, cls, idName, text) {
 };
 
 function createHeader() {
-    const body = document.querySelector('body');
+    const body = document.querySelector('.main');
 
     const header = createBasicEl('div','header','','');
     const title = createBasicEl('div','title-container','','');
@@ -37,7 +37,7 @@ function createHeader() {
 };
 
 function createForm() {
-    const body = document.querySelector('body');
+    const body = document.querySelector('.main');
     
     const formDisplay = createBasicEl('div','form-display','','');
     const form = createBasicEl('form','item-form','','');
@@ -67,9 +67,7 @@ function createForm() {
                 <option value='high'>High</option>
             </select>
     </fieldset>
-    <fieldset>
     <button id='form-submit' type='submit'>Add item</button>
-    </fieldset>
 
     `
 

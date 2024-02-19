@@ -6,6 +6,10 @@ class Item {
         this.status = false;
     }
 
+    editName(name) {
+        name = this.name;
+    }
+
     toggleStatus() {
         this.status = !this.status;
     }

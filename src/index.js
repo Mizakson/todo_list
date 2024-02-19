@@ -55,17 +55,15 @@ function addItem() {
         TASKS.push(item);
     };
 
-    console.log(TASKS);
-
 }
 
-function mainRender(arr) {
+function mainRender() {
     const display = document.querySelector('#display');
 
-    for (let i = 0; i < arr.length; i++) {
-        let item = arr[i];
+    for (let i = 0; i < TASKS.length; i++) {
+        let item = TASKS[i];
         let itemEl = document.createElement('div');
-        itemEl.classList.add(`item-${i}-card`);
+        itemEl.classList.add(`item-${i}`);
         itemEl.innerHTML = `
         <div class='item-header'>
             <p class='item-title'><em>${item.title}</em></p> 
@@ -131,16 +129,11 @@ function showAddForm() {
 
 };
 
-function subRender(arr, index) {
-    const display = document.querySelector('#display');
-    const item = arr[index];
+function deleteItem(index) {
+    arr.splice(index, 1);
+    mainRender();
+}
 
-    if (item.type == 'task') {
-        // render full task
-    } else if (item.type = 'project') {
-        // render full project
-    }
-};
 
 function buttonEvents() {
     document.addEventListener("click", function(e) {

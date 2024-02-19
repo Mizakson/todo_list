@@ -9,7 +9,7 @@ function createHeader() {
     titleContainer.id = 'title';
     
     const mainText = document.createElement('h1');
-    mainText.innerText = 'ToDo List';
+    mainText.innerText = 'To Do List';
     titleContainer.appendChild(mainText);
 
     const projNumber = document.createElement('p');
@@ -31,7 +31,13 @@ function createHeader() {
     homeBtn.id = 'home';
     homeBtn.innerText = 'Home';
 
+    const addBtn = document.createElement('button');
+    addBtn.classList.add('add');
+    addBtn.id = 'main-add';
+    addBtn.innerText = '+';
+
     navContainer.appendChild(homeBtn);
+    navContainer.appendChild(addBtn);
 
     header.appendChild(navContainer);
 

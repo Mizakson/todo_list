@@ -8,9 +8,7 @@ class Project extends Task {
         this.status = false;
     };
 
-    otherMethod() {
-        return 'other method';
-    };
+
 
 };
 

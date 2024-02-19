@@ -9,7 +9,7 @@ function createHeader() {
     titleContainer.id = 'title';
     
     const mainText = document.createElement('h1');
-    mainText.innerText = 'ToDo List';
+    mainText.innerText = 'To Do List';
     titleContainer.appendChild(mainText);
 
     const projNumber = document.createElement('p');

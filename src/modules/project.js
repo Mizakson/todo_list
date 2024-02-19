@@ -8,6 +8,16 @@ class Project extends Task {
         this.type = 'project';
         this.items = [];
     }
+
+    additem(item) {
+        this.items.push(item);
+    }
+
+    deleteItem(index) {
+        this.items.splice(index, 1);
+    }
+
+
 };
 
 export default Project;

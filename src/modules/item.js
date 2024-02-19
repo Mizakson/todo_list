@@ -1,9 +1,8 @@
 // main item class
 
 class Item {
-    constructor(name, type) {
+    constructor(name) {
         this.name = name;
-        this.type = type;
         this.status = false;
     }
 

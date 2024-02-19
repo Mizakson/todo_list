@@ -10,6 +10,7 @@ class Project extends Item {
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
+        this.items = [];
     }
 };
 

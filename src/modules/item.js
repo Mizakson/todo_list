@@ -6,6 +6,11 @@ class Item {
         this.type = type;
         this.status = false;
     }
+
+    toggleStatus() {
+        this.status = !this.status;
+    }
+
 };
 
 export default Item;

@@ -8,23 +8,40 @@ DEFAULT_PROJECT.additem(TASK1);
 
 function addFormItem() {
     const defaultText = 'Edit me...';
-    let item;
 
-    const $type = document.querySelector('#type').value;
+    const $type = document.getElementById('type');
+    const type = $type.value;
 
-    if ($type = 'project') {
-        const $name = document.querySelector('#name').value; 
-        const $date = document.querySelector('#date').value; 
-        const $priority = document.querySelector('#priority').value; 
-        item = new Project($name, defaultText, $date, $priority, defaultText);
-    } else if ($type = 'task') {
-        const $name = document.querySelector('#name').value; 
-        const $date = document.querySelector('#date').value; 
-        const $priority = document.querySelector('#priority').value; 
-        item = new Task($name, defaultText, $date, $priority, defaultText);
+    if (type === 'project') {
+
+        const $name = document.getElementById('name');
+        const name = $name.value;
+
+        const $dueDate = document.getElementById('date');
+        const dueDate = $dueDate.value;
+
+        const $priority = document.getElementById('priority');
+        const priority = $priority.value;
+
+        const item = new Project(name, defaultText, dueDate, priority, defaultText);
+        DEFAULT_PROJECT.items.push(item);
+
+    } else if (type === 'task') {
+
+        const $name = document.getElementById('name');
+        const name = $name.value;
+
+        const $dueDate = document.getElementById('date');
+        const dueDate = $dueDate.value;
+
+        const $priority = document.getElementById('priority');
+        const priority = $priority.value;
+
+
+        const item = new Task(title, defaultText, dueDate, priority, defaultText);
+        DEFAULT_PROJECT.items.push(item);
     };
 
-    DEFAULT_PROJECT.additem(item);
     console.log(DEFAULT_PROJECT.items);
 
 }
@@ -88,6 +105,7 @@ function buttonEvents() {
 
 
 function init() {
+    buttonEvents();
     pageOnLoad();
 }
 

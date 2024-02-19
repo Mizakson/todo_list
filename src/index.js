@@ -11,17 +11,20 @@ function addFormItem() {
     let item;
 
     const $type = document.querySelector('#type').value;
-    const $name = document.querySelector('#name').value; 
-    const $date = document.querySelector('#date').value; 
-    const $priority = document.querySelector('#priority').value; 
 
     if ($type = 'project') {
+        const $name = document.querySelector('#name').value; 
+        const $date = document.querySelector('#date').value; 
+        const $priority = document.querySelector('#priority').value; 
         item = new Project($name, defaultText, $date, $priority, defaultText);
     } else if ($type = 'task') {
+        const $name = document.querySelector('#name').value; 
+        const $date = document.querySelector('#date').value; 
+        const $priority = document.querySelector('#priority').value; 
         item = new Task($name, defaultText, $date, $priority, defaultText);
     };
 
-    DEFAULT_PROJECT.items.push(item);
+    DEFAULT_PROJECT.additem(item);
     console.log(DEFAULT_PROJECT.items);
 
 }
@@ -75,11 +78,10 @@ function createBlankForm() {
 };
 
 function buttonEvents() {
-    document.addEventListener('click', function(e) {
+    document.addEventListener('onclick', function(e) {
         const target = e.target.closest('#form-submit');
         if (target) {
             addFormItem();
-            clearForm();
         }
     })
 }

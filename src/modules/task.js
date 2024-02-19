@@ -16,6 +16,22 @@ class Task {
         name = this.name;
     }
 
+    editDescription(description) {
+        description = this.description;
+    }
+
+    editDueDate(dueDate) {
+        dueDate = this.dueDate;
+    }
+
+    editPriority(priority) {
+        priority = this.priority;
+    }
+
+    editNotes(notes) {
+        notes = this.notes;
+    }
+
     toggleStatus() {
         this.status = !this.status;
     }

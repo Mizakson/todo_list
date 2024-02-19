@@ -53,11 +53,11 @@ function createForm() {
     </fieldset>
     <fieldset>
         <label for='name'>Name: </label>
-        <input type='text' id='name maxlength='75' placeholder=' -- Enter text here -- '>
+        <input type='text' id='name' maxlength='75' placeholder=' -- Enter text here -- '>
     </fieldset>
     <fieldset>
         <label for='date'>Date: </label>
-        <input type='text' id='date maxlength='25' placeholder=' -- mm/dd/yy -- '>
+        <input type='text' id='date' maxlength='25' placeholder=' -- mm/dd/yy -- '>
     </fieldset>
     <fieldset>
         <label for='priority'>Priority: </label>

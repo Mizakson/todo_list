@@ -10,7 +10,6 @@ function addFormItem() {
     const defaultText = 'Edit me...';
     let item;
 
-    const form = document.querySelector('.item-form');
     const $type = document.querySelector('#type').value;
     const $name = document.querySelector('#name').value; 
     const $date = document.querySelector('#date').value; 
@@ -23,8 +22,26 @@ function addFormItem() {
     };
 
     DEFAULT_PROJECT.additem(item);
+    console.log(DEFAULT_PROJECT.items);
 
 }
+
+function clearForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('date').value = '';
+}
+
+
+function buttonEvents() {
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('#form-submit');
+        if (target) {
+            addFormItem();
+            clearForm();
+        }
+    })
+}
+
 
 function init() {
     pageOnLoad();

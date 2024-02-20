@@ -76,9 +76,14 @@ function createForm() {
 
 };
 
+function createDisplay() {
+    createBasicEl('div','display','','');
+}
+
 function pageOnLoad() {
     createHeader();
     createForm();
+    createDisplay();
 };
 
 export default pageOnLoad;

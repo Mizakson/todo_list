@@ -77,7 +77,10 @@ function createForm() {
 };
 
 function createDisplay() {
-    createBasicEl('div','display','','');
+    const display = createBasicEl('div','display','','');
+    const main = document.querySelector('.main');
+
+    main.appendChild(display);
 }
 
 function pageOnLoad() {

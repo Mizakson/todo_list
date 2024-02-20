@@ -64,6 +64,13 @@ function buttonEvents() {
     })
 }
 
+function render() {
+    // render all items in DEFAULT_PROJECT.items
+    for (let i = 0; i < DEFAULT_PROJECT.items; i++) {
+        
+    }
+}
+
 
 function init() {
     pageOnLoad();

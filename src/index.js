@@ -70,15 +70,22 @@ function render(arr) {
         let item = arr[i];
         let itemEl = document.createElement('div');
         itemEl.innerHTML = '';
-        itemEl.classList.add(`card-${i}`);
+        itemEl.classList.add(`card`);
+        itemEl.id = `${i}`;
 
             itemEl.innerHTML += `
                 <div class='card-header'>
                     <h2 class='card-title'>${item.name}</h2>
                     <h2 class='card-type'>${item.type}</h2>
                     <h2 class='card-date'>${item.dueDate}</h2>
-                    <button class='expand-${i}'>Edit</button>
-                    <button class='delete-${i}'>Delete</button>
+                    <button class='edit' id='edit-${i}'>Edit</button>
+                    <button class='delete' id='delete-${i}'>Delete</button>
+                    <button class='toggle' id='toggle-${i}'>Toggle</button>
+                </div>
+                <div class='card-info'>
+                    <p class='card-description'>${item.description}</p>
+                    <p class='card-notes'>${item.notes}</p>
+                    <p class='card-priority'>${item.priority}</p>
                 </div>
             `;
             display.appendChild(itemEl);
@@ -88,15 +95,22 @@ function render(arr) {
                 let subItem = item.items[j];
                 let subItemEl = document.createElement('div');
                 subItemEl.innerHTML = '';
-                subItemEl.classList.add(`sub-card-${j}`);
+                subItemEl.classList.add(`sub-card`);
+                subItemEl.id = `${j}`;
                 subItemEl.innerHTML += `
                 <div class='sub-card-header'>
                     <h2 class='sub-card-title'>${subItem.name}</h2>
                     <h2 class='sub-card-type'>task</h2>
                     <h2 class='sub-card-date'>${subItem.dueDate}</h2>
-                    <button class='sub-expand-${j}'>Edit</button>
-                    <button class='sub-delete-${j}'>Delete</button>
+                    <button class='edit' id='edit-${j}'>Edit</button>
+                    <button class='delete' id='delete-${j}'>Delete</button>
+                    <button class='toggle' id='toggle-${j}'>Toggle</button>
                 </div>
+                <div class='sub-card-info'>
+                <p class='sub-card-description'>${subItem.description}</p>
+                <p class='sub-card-notes'>${subItem.notes}</p>
+                <p class='sub-card-priority'>${subItem.priority}</p>
+            </div>
             `;
             itemEl.appendChild(subItemEl);
         }
@@ -119,11 +133,23 @@ function buttonEvents() {
     })
 }
 
+function hideInfo(div) {
+   const info = document.querySelector(`.${div}`);
+   info.style.display = 'none';
+}
+
+function showInfo(div) {
+    const info = document.querySelector(`.${div}`);
+    info.classList.add('active');
+}
 
 function init() {
     pageOnLoad();
     buttonEvents();
     render(DEFAULT_PROJECT.items);
+    hideInfo('card-info');
+    hideInfo('sub-card');
+    hideInfo('sub-card-info');
 }
 
 init();

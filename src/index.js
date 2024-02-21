@@ -2,6 +2,7 @@ import Project from "./modules/project.js";
 import Task from "./modules/task.js";
 import pageOnLoad from "./modules/interface.js";
 
+// default data
 const DEFAULT_PROJECT = new Project('DEFAULT','N/A','N/A','N/A','N/A');
 const DEFAULT_TASK = new Task('DEFAULT','DESC','DATE','PRIO','NOTES');
 const TEST_PROJ = new Project('TEST', 'TEST', 'TEST', 'TEST', 'TEST');
@@ -10,6 +11,7 @@ const TEST_TASK = new Task('TASK','aaa','bbb','ccc','ddd');
 DEFAULT_PROJECT.additem(DEFAULT_TASK);
 DEFAULT_PROJECT.additem(TEST_PROJ);
 TEST_PROJ.additem(TEST_TASK);
+
 
 function addFormItem() {
     const defaultText = 'Edit me...';
@@ -82,7 +84,7 @@ function render(arr) {
                     <button class='delete' id='delete-${i}'>Delete</button>
                     <button class='toggle' id='toggle-${i}'>Toggle</button>
                 </div>
-                <div class='card-info'>
+                <div class='card-info' id='card-info-${i}'>
                     <p class='card-description'>${item.description}</p>
                     <p class='card-notes'>${item.notes}</p>
                     <p class='card-priority'>${item.priority}</p>
@@ -102,11 +104,11 @@ function render(arr) {
                     <h2 class='sub-card-title'>${subItem.name}</h2>
                     <h2 class='sub-card-type'>task</h2>
                     <h2 class='sub-card-date'>${subItem.dueDate}</h2>
-                    <button class='edit' id='edit-${j}'>Edit</button>
-                    <button class='delete' id='delete-${j}'>Delete</button>
-                    <button class='toggle' id='toggle-${j}'>Toggle</button>
+                    <button class='edit' id='sub-edit-${j}' onclick=>Edit</button>
+                    <button class='delete' id='sub-delete-${j}'>Delete</button>
+                    <button class='toggle' id='sub-toggle-${j}'>Toggle</button>
                 </div>
-                <div class='sub-card-info'>
+                <div class='sub-card-info' id='sub-card-info-${j}'>
                 <p class='sub-card-description'>${subItem.description}</p>
                 <p class='sub-card-notes'>${subItem.notes}</p>
                 <p class='sub-card-priority'>${subItem.priority}</p>
@@ -120,6 +122,7 @@ function render(arr) {
 }
 
 function buttonEvents() {
+
     document.addEventListener('click', function(e) {
         e.preventDefault();
         const target = e.target.closest('#form-submit');
@@ -131,25 +134,15 @@ function buttonEvents() {
             render(DEFAULT_PROJECT.items);
         }
     })
+
 }
 
-function hideInfo(div) {
-   const info = document.querySelector(`.${div}`);
-   info.style.display = 'none';
-}
 
-function showInfo(div) {
-    const info = document.querySelector(`.${div}`);
-    info.classList.add('active');
-}
 
 function init() {
     pageOnLoad();
     buttonEvents();
     render(DEFAULT_PROJECT.items);
-    hideInfo('card-info');
-    hideInfo('sub-card');
-    hideInfo('sub-card-info');
 }
 
 init();

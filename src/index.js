@@ -133,7 +133,29 @@ function buttonEvents() {
             clearDisplay();
             render(DEFAULT_PROJECT.items);
         }
-    })
+    });
+
+    // get an array of all cards from display
+    const display = document.querySelector('.display');
+    const arr = Array.from(display.children);
+
+    console.log(arr);
+
+    //on click for main card edit btn
+    for (let i = 0; i < arr.length; i++) {
+        let card = Array.from(arr[i].children);
+        for (let j = 0; j < card.length; j++) {
+            const header = Array.from(card[0].children);
+            for (let k = 0; k < header.length; k++) {
+                if (header[k].className === 'edit') {
+                    header[k].onclick = function() {
+                        console.log('clicked' + i);
+                        card[1].classList.toggle('active');
+                    }
+                }
+            }
+        }
+    }
 
 }
 
@@ -141,8 +163,8 @@ function buttonEvents() {
 
 function init() {
     pageOnLoad();
-    buttonEvents();
     render(DEFAULT_PROJECT.items);
+    buttonEvents();
 }
 
 init();

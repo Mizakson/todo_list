@@ -68,6 +68,7 @@ function clearDisplay() {
 
 function render(arr) {
     const display = document.querySelector('.display');
+ 
     for (let i = 0; i < arr.length; i++) {
         let item = arr[i];
         let itemEl = document.createElement('div');
@@ -78,7 +79,7 @@ function render(arr) {
             itemEl.innerHTML += `
                 <div class='card-header'>
                     <h2 class='card-title'>${item.name}</h2>
-                    <h2 class='card-type'>${item.type}</h2>
+                    <h2 class='card-type' value='${item.type}'>${item.type}</h2>
                     <h2 class='card-date'>${item.dueDate}</h2>
                     <button class='edit' id='edit-${i}'>Edit</button>
                     <button class='delete' id='delete-${i}'>Delete</button>
@@ -94,38 +95,10 @@ function render(arr) {
                 </div>
             `;
             display.appendChild(itemEl);
+            const header = document.querySelector('.card-header');
 
-        if (item.type === 'project') {
-            // for (let j = 0; j < item.items.length; j++) {
-            //     let subItem = item.items[j];
-            //     let subItemEl = document.createElement('div');
-            //     subItemEl.innerHTML = '';
-            //     subItemEl.classList.add(`sub-card`);
-            //     subItemEl.id = `${j}`;
-            //     subItemEl.innerHTML += `
-            //     <div class='sub-card-header'>
-            //         <h2 class='sub-card-title'>${subItem.name}</h2>
-            //         <h2 class='sub-card-type'>task</h2>
-            //         <h2 class='sub-card-date'>${subItem.dueDate}</h2>
-            //         <button class='edit' id='sub-edit-${j}' onclick=>Edit</button>
-            //         <button class='delete' id='sub-delete-${j}'>Delete</button>
-            //         <button class='toggle' id='sub-toggle-${j}'>Toggle</button>
-            //         <button class='add-task' id ='add-task-${j}>+</button>
-            //     </div>
-            //     <div class='sub-card-info' id='sub-card-info-${j}'>
-            //         <div class='sub-editable' id='sub-editable-${j}' contenteditable='true'>
-            //             <p class='sub-card-description'>${subItem.description}</p>
-            //             <p class='sub-card-notes'>${subItem.notes}</p>
-            //             <p class='sub-card-priority'>${subItem.priority}</p>
-            //         </div>
-            // </div>
-            // <button class='sub-save' id='sub-save${j}>Save</button>
-            // </div>
-            // `;
-            // itemEl.appendChild(subItemEl);
-            render(arr[i]);
-        }
     }
+
 }
 
 
@@ -148,7 +121,7 @@ function buttonEvents() {
     const display = document.querySelector('.display');
     const arr = Array.from(display.children);
 
-    console.log(arr);
+    // console.log(arr);
 
     //on click for main card edit btn
     for (let i = 0; i < arr.length; i++) {
@@ -165,6 +138,14 @@ function buttonEvents() {
             }
         }
     }
+
+    // on click for deleteBtn
+
+
+    // on click for toggleBtn
+
+
+    // on click for addTaskBtn
 
 }
 

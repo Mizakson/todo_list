@@ -85,41 +85,49 @@ function render(arr) {
                     <button class='toggle' id='toggle-${i}'>Toggle</button>
                 </div>
                 <div class='card-info' id='card-info-${i}'>
+                    <div class='editable' id='editable=${i}' contenteditable='true'>
                     <p class='card-description'>${item.description}</p>
                     <p class='card-notes'>${item.notes}</p>
-                    <p class='card-priority'>${item.priority}</p>
+                    <p class='card-priority'>${item.priority}</p> 
+                </div>
+                <button class='save' id='save-${i}'>Save</button>
                 </div>
             `;
             display.appendChild(itemEl);
 
         if (item.type === 'project') {
-            for (let j = 0; j < item.items.length; j++) {
-                let subItem = item.items[j];
-                let subItemEl = document.createElement('div');
-                subItemEl.innerHTML = '';
-                subItemEl.classList.add(`sub-card`);
-                subItemEl.id = `${j}`;
-                subItemEl.innerHTML += `
-                <div class='sub-card-header'>
-                    <h2 class='sub-card-title'>${subItem.name}</h2>
-                    <h2 class='sub-card-type'>task</h2>
-                    <h2 class='sub-card-date'>${subItem.dueDate}</h2>
-                    <button class='edit' id='sub-edit-${j}' onclick=>Edit</button>
-                    <button class='delete' id='sub-delete-${j}'>Delete</button>
-                    <button class='toggle' id='sub-toggle-${j}'>Toggle</button>
-                </div>
-                <div class='sub-card-info' id='sub-card-info-${j}'>
-                <p class='sub-card-description'>${subItem.description}</p>
-                <p class='sub-card-notes'>${subItem.notes}</p>
-                <p class='sub-card-priority'>${subItem.priority}</p>
-            </div>
-            `;
-            itemEl.appendChild(subItemEl);
+            // for (let j = 0; j < item.items.length; j++) {
+            //     let subItem = item.items[j];
+            //     let subItemEl = document.createElement('div');
+            //     subItemEl.innerHTML = '';
+            //     subItemEl.classList.add(`sub-card`);
+            //     subItemEl.id = `${j}`;
+            //     subItemEl.innerHTML += `
+            //     <div class='sub-card-header'>
+            //         <h2 class='sub-card-title'>${subItem.name}</h2>
+            //         <h2 class='sub-card-type'>task</h2>
+            //         <h2 class='sub-card-date'>${subItem.dueDate}</h2>
+            //         <button class='edit' id='sub-edit-${j}' onclick=>Edit</button>
+            //         <button class='delete' id='sub-delete-${j}'>Delete</button>
+            //         <button class='toggle' id='sub-toggle-${j}'>Toggle</button>
+            //         <button class='add-task' id ='add-task-${j}>+</button>
+            //     </div>
+            //     <div class='sub-card-info' id='sub-card-info-${j}'>
+            //         <div class='sub-editable' id='sub-editable-${j}' contenteditable='true'>
+            //             <p class='sub-card-description'>${subItem.description}</p>
+            //             <p class='sub-card-notes'>${subItem.notes}</p>
+            //             <p class='sub-card-priority'>${subItem.priority}</p>
+            //         </div>
+            // </div>
+            // <button class='sub-save' id='sub-save${j}>Save</button>
+            // </div>
+            // `;
+            // itemEl.appendChild(subItemEl);
+            render(arr[i]);
         }
     }
-        
-    }
 }
+
 
 function buttonEvents() {
 
@@ -132,6 +140,7 @@ function buttonEvents() {
             clearForm();
             clearDisplay();
             render(DEFAULT_PROJECT.items);
+            buttonEvents();
         }
     });
 

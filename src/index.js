@@ -49,7 +49,6 @@ function render() {
         info.appendChild(description);
         info.appendChild(priority);
         info.appendChild(notes);
-        info.style.display = 'none';
 
         if (item['type'] === 'project') {
             const addTask = createEl('button','addTask',`addTask-${index}`,'+');
@@ -85,7 +84,6 @@ function render() {
                 card.appendChild(btns);
 
                 childContainer.appendChild(card);
-                card.style.display = 'none';
 
             }); 
 
@@ -116,11 +114,52 @@ function render() {
     
 }
 
+function buttonEvents() {
+    // edit on click makes info visible
+    const display = Array.from(document.querySelector('.display').children);
 
+    display.forEach(function (item,index,arr) {
+        const itemArr = Array.from(item.children);
+        const header = Array.from(itemArr[0].children);
+        const btns = Array.from(header[3].children);
+        // console.log(header);
+        const type = header[1].innerText;
+        // console.log(btns);
+        console.log(itemArr);
+        btns.forEach(function (subItem,subIndex,subArr) {
+            if (btns[subIndex].classList.value === 'edit') {
+                btns[subIndex].onclick = function() {
+                    itemArr[1].style.display = 'flex';
+                    console.log(`clicked edit btn in item ${index}`);
+                }
+            }
+            if (btns[subIndex].classList.value === 'addTask') {
+                btns[subIndex].onclick = function() {
+                    console.log(`clicked addTask btn in project ${index}`);
+                    // show child tasks
+                    itemArr[2].style.display = 'flex';
+                    // add task input
+                }
+            }
+            if (btns[subIndex].classList.value === 'toggle') {
+                btns[subIndex].onclick = function () {
+                    console.log(`clicked toggle btn in item ${index}`);
+                }
+            }
+            if (btns[subIndex].classList.value === 'delete') {
+                btns[subIndex].onclick = function () {
+                    console.log(`clicked delete btn in item ${index}`);
+                }
+            }
+
+        })
+    })
+}
 
 function init() {
     pageOnLoad();
     render();
+    buttonEvents();
 }
 
 init();

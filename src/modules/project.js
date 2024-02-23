@@ -7,6 +7,7 @@ class Project extends Task {
         super(name, description, dueDate, priority, notes);
         this.type = 'project';
         this.items = [];
+        this.status = false;
     }
 
     additem(item) {

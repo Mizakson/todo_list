@@ -59,7 +59,6 @@ function render() {
 
             // the values from the child task objects
             const childTasks = (Object.entries(childItem)[7][1]);
-            console.log(childTasks);
 
             childTasks.forEach(function(item, index) {
                 const card = createEl('div','child-card',`child-card${index}`,'');
@@ -86,6 +85,7 @@ function render() {
                 card.appendChild(btns);
 
                 childContainer.appendChild(card);
+                card.style.display = 'none';
 
             }); 
 

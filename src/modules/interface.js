@@ -45,14 +45,7 @@ function createForm() {
     form.innerHTML += `
     <h2 id='form-title'>What to do?...</h2>
     <fieldset>
-        <label for='type'>Type: </label>
-            <select name='type' id='type'>
-                <option value='project'>Project</option>
-                <option value='task'>Task</option>
-            </select>        
-    </fieldset>
-    <fieldset>
-        <label for='name'>Name: </label>
+        <label for='name'>Project Name: </label>
         <input type='text' id='name' maxlength='75' placeholder=' -- Enter text here -- '>
     </fieldset>
     <fieldset>

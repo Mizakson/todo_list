@@ -30,6 +30,19 @@ function clearDisplay() {
     display.innerHTML = '';
 }
 
+function mainFormReset() {
+    const form = document.querySelector('.item-form');
+    const type = document.querySelector('#type');
+    const name = document.querySelector('#name');
+    const date = document.querySelector('#date');
+    const priority = document.querySelector('#priority');
+
+    type.value = '';
+    name.value = '';
+    date.value = '';
+    priority.value = '';
+}
+
 // main render funciton
 function render() {
     const display = document.querySelector('.display');
@@ -88,7 +101,7 @@ function render() {
                 <input type='text' id='child-task-date' maxlength='25' placeholder=' -- mm/dd/yy -- '>
             
             </fieldset>
-                <button id='child-task-submit-${index} class='child-task-submit' type='submit'>Add task</button>
+                <button id='child-task-submit-${index}' class='child-task-submit' type='submit'>Add task</button>
             `;
             childTaskFormContainer.appendChild(childTaskForm);
 
@@ -152,6 +165,9 @@ function buttonEvents() {
     // edit on click makes info visible
     const display = Array.from(document.querySelector('.display').children);
 
+    // will iterate through
+    const projects = [];
+
     display.forEach(function (item,index,arr) {
         const itemArr = Array.from(item.children);
         const header = Array.from(itemArr[0].children);
@@ -164,11 +180,15 @@ function buttonEvents() {
         // child elements of projects
         // mainArr[n].items only if type is project
         if (type === 'project') {
+            console.log(arr[index]);
+            const nestedForm = header[4];
+            // console.log(nestedForm, index);
+            // nested(Array.from(nestedForm[0].children)[1]);
             const child = Array.from(itemArr[2].children);
             // console.log(child);
             child.forEach(function (childItem, childIndex, childArr) {
                 const childEl = Array.from(childItem.children);
-                // console.log(childEl);
+                
                 const childBtns = Array.from(childEl[1].children);
                 // console.log(childBtns);
                 childBtns.forEach(function (subItem, subIndex, subArr) {
@@ -191,6 +211,7 @@ function buttonEvents() {
                     }
                 })
             })
+
         }
 
         // onclick methods for first level of mainArr
@@ -208,7 +229,6 @@ function buttonEvents() {
                     itemArr[2].style.display = 'flex';
                     // show add task form
                     itemArr[0].children[4].style.display = 'flex';
-
                 }
             }
             if (btns[subIndex].classList.value === 'toggle') {
@@ -220,15 +240,17 @@ function buttonEvents() {
                 btns[subIndex].onclick = function () {
                     console.log(`clicked delete btn in item ${index}`);
                 }
-            }
+            }            
 
         })
+
     })
 
     // main form submit
     const mainForm = document.querySelector('.item-form');
     mainForm.addEventListener("submit", function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         const type = document.querySelector('#type').value;
         const name = document.querySelector('#name').value;
         const date = document.querySelector('#date').value;
@@ -240,14 +262,19 @@ function buttonEvents() {
         if (type === 'project') {
             const newProj = new Project(name,description,date,priority,notes);
             MAIN_PROJECT.additem(newProj);
+            clearDisplay();
+            render();
+            buttonEvents();
         } else if (type === 'task') {
             const newTask = new Task(name,description,date,priority,notes);
             MAIN_PROJECT.additem(newTask);
+            clearDisplay();
+            render();
+            buttonEvents();
         }
+        
 
-        clearDisplay();
-        render();
-        buttonEvents();
+        
     })
 
 }

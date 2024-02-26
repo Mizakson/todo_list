@@ -13,7 +13,7 @@ const NESTED_TASK2 = new Task('nest task','description here','8/6/29','high','ju
 DEFAULT_PROJECT.additem(NESTED_TASK);
 DEFAULT_PROJECT.additem(NESTED_TASK2);
 
-
+const display = document.querySelector('.display');
 
 function createEl(tag, cls, idName, text) {
     const el = document.createElement(tag);
@@ -24,14 +24,19 @@ function createEl(tag, cls, idName, text) {
 }
 
 function clearDisplay() {
-    const display = document.querySelector('.display');
     display.innerHTML = '';
 }
 
 
 // main render funciton
 function render() {
-    
+    // iterate through mainArr
+
+    console.log(mainArr);
+
+    mainArr.forEach(function(item, index) {
+        console.log(item,index);
+    })
     
 }
 

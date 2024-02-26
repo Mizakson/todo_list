@@ -1,0 +1,12 @@
+.info, .form-container {
+    display: none;
+}
+
+.active {
+    display: flex;
+    gap: 15px;
+}
+
+.green {
+    background-color: lightgreen;
+}

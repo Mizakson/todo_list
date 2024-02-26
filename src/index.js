@@ -47,7 +47,7 @@ function mainRender() {
     // iterate through mainArr to display all projects
     const display = document.querySelector('.display');
     mainArr.forEach(function(item, index, arr) {
-        const card = createEl('div','card',`card`,'');
+        const card = createEl('div','card',`${index}`,'');
 
         const header = createEl('div','header','','');
         const name = createEl('h2','project-name','',`${item['name']}`);
@@ -56,17 +56,19 @@ function mainRender() {
         card.appendChild(header)
         
         const btns = createEl('div','btns','','');
-        const view = createEl('button','view',``,'View');
-        const toggle = createEl('button','',``,'Toggle');
-        const del = createEl('button','',``,'X');
+        const view = createEl('button','view',`${index}`,'View');
+        const toggle = createEl('button','toggle',`${index}`,'Toggle');
+        const del = createEl('button','delete',`${index}`,'X');
+        const add = createEl('button','add',`add-${index}`,'+');
         
         btns.appendChild(view);
         btns.appendChild(toggle);
         btns.appendChild(del);
+        btns.appendChild(add);
 
         card.appendChild(btns)
 
-        const info = createEl('div','info','','');
+        const info = createEl('div','info',`info-${index}`,'');
         const description = createEl('p', 'description','',`Description: \n ${item['description']}`);
         const dueDate = createEl('p', 'dueDate','',`Date: \n ${item['dueDate']}`);
         const priority = createEl('p', 'priority','',`Priority: \n ${item['description']}`);
@@ -79,13 +81,31 @@ function mainRender() {
 
         card.appendChild(info);
 
+        const formContainer = createEl('div','form-container', `form-container-${index}`,'');
+        formContainer.innerHTML = `
+        <label for='task-name-${index}'>Task Name: </label>
+        <input type='text' id='task-name-${index}' maxlength='75' placeholder=' -- Enter text here -- '>
+        <label for='task-dueDate-${index}'>Date: </label>
+        <input type='text' id='task-dueDate-${index}' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+        <label for='task-priority-${index}'>Priority: </label>
+            <select name='task-priority-${index}' id='task-priority-${index}'>
+                <option value='low'>Low</option>
+                <option value='mid'>Mid</option>
+                <option value='high'>High</option>
+            </select>
+    <button id='task-form-submit-${index}' type='submit'>Add item</button>
+        `;
+
+        card.appendChild(formContainer);
+
+
         display.appendChild(card);
         
     })
     
 }
 
-function subRender(i) {
+function subRender(index) {
     const item = mainArr[i].items;
 
     item.forEach(function (item,index,arr) {
@@ -93,8 +113,57 @@ function subRender(i) {
     });
 }
 
-function buttonEvents() {
 
+function buttonEvents() {
+    // button events for mainRender elements
+    const display = document.querySelector('.display');
+    const nodes = display.childNodes;
+    nodes.forEach(function (item,index,arr) {
+        
+        const btns = item.childNodes[1].childNodes;
+        // console.log(item);
+
+        btns.forEach(function(subItem) {
+            // console.log(subItem);
+            
+            // toggle info for project
+            if (subItem.classList.value === 'view') {
+                subItem.addEventListener("click",function() {
+                    console.log('clicked view', index);
+                    const info = arr[index].childNodes[2];
+                    info.classList.toggle('active');
+                })
+            }
+
+            // toggle status for project
+            else if (subItem.classList.value === 'toggle') {
+                subItem.addEventListener("click", function(){
+                    mainArr[index].status = !mainArr[index].status;
+                    arr[index].classList.toggle('green');
+                });
+            }
+
+            if (subItem.classList.value === 'add') {
+                // make addTask form visible
+                subItem.addEventListener("click", function() {
+                    const form = arr[index].childNodes[3];
+                    form.classList.toggle('active');
+                });
+            }
+
+            else if (subItem.classList.value === 'delete') {
+                subItem.addEventListener("click", function() {
+                    MAIN_PROJECT.deleteItem(index);
+                    clearDisplay();
+                    mainRender();
+                    buttonEvents();
+                });
+
+
+            }
+
+        });
+    });
 
 }
 

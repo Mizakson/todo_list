@@ -18,6 +18,10 @@ class Project extends Task {
         this.items.splice(index, 1);
     }
 
+    toggleStatus() {
+        this.status != this.status;
+    }
+
 };
 
 export default Project;

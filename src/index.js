@@ -25,6 +25,11 @@ function createEl(tag, cls, idName, text) {
     return el;
 }
 
+function clearDisplay() {
+    const display = document.querySelector('.display');
+    display.innerHTML = '';
+}
+
 // main render funciton
 function render() {
     const display = document.querySelector('.display');
@@ -50,9 +55,43 @@ function render() {
         info.appendChild(priority);
         info.appendChild(notes);
 
+        const edit = createEl('button','edit',`edit-${index}`,'Edit');
+        const del = createEl('button','delete',`delete-${index}`,'Delete');
+        const toggle = createEl('button','toggle',`toggle-${index}`,'Toggle');
+
+        btns.appendChild(edit);
+        btns.appendChild(del);
+        btns.appendChild(toggle);
+
+        header.appendChild(name);
+        header.appendChild(type);
+        header.appendChild(dueDate);
+        header.appendChild(btns);
+
+        card.appendChild(header);
+        card.appendChild(info);
+        card.appendChild(childContainer);
+        display.appendChild(card);
+
         if (item['type'] === 'project') {
             const addTask = createEl('button','addTask',`addTask-${index}`,'+');
+            const childTaskFormContainer = createEl('div','child-task-form-container',`child-task-form-container-${index}`,'');
             btns.appendChild(addTask);
+            // add task form goes here
+            const childTaskForm = createEl('form','child-task-form',`child-task-form-${index}`,'');
+            childTaskForm.innerHTML = `
+            <fieldset>
+                <input type='text' id='child-task-name' maxlength='75' placeholder='New task name...'>
+            
+            
+                <label for='child-task-date'>Date: </label>
+                <input type='text' id='child-task-date' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+            
+            </fieldset>
+                <button id='child-task-submit-${index} class='child-task-submit' type='submit'>Add task</button>
+            `;
+            childTaskFormContainer.appendChild(childTaskForm);
+
 
             const childItem = arr[index];
 
@@ -60,7 +99,7 @@ function render() {
             const childTasks = (Object.entries(childItem)[7][1]);
 
             childTasks.forEach(function(item, index) {
-                const card = createEl('div','child-card',`child-card${index}`,'');
+                const card = createEl('div','child-card',`child-card-${index}`,'');
                 const header = createEl('div','child-header',`child-header-${index}`,'');
                 const btns = createEl('div','child-btns',`child-btns-${index}`,'');
 
@@ -95,27 +134,14 @@ function render() {
 
             }); 
 
+            header.appendChild(childTaskFormContainer)
         
         }
 
-        const edit = createEl('button','edit',`edit-${index}`,'Edit');
-        const del = createEl('button','delete',`delete-${index}`,'Delete');
-        const toggle = createEl('button','toggle',`toggle-${index}`,'Toggle');
 
 
-        btns.appendChild(edit);
-        btns.appendChild(del);
-        btns.appendChild(toggle);
 
-        header.appendChild(name);
-        header.appendChild(type);
-        header.appendChild(dueDate);
-        header.appendChild(btns);
 
-        card.appendChild(header);
-        card.appendChild(info);
-        card.appendChild(childContainer);
-        display.appendChild(card);
 
     })
 
@@ -139,12 +165,12 @@ function buttonEvents() {
         // mainArr[n].items only if type is project
         if (type === 'project') {
             const child = Array.from(itemArr[2].children);
-            console.log(child);
+            // console.log(child);
             child.forEach(function (childItem, childIndex, childArr) {
                 const childEl = Array.from(childItem.children);
-                console.log(childEl);
+                // console.log(childEl);
                 const childBtns = Array.from(childEl[1].children);
-                console.log(childBtns);
+                // console.log(childBtns);
                 childBtns.forEach(function (subItem, subIndex, subArr) {
                     if (childBtns[subIndex].classList.value === 'child-edit') {
                         childBtns[subIndex].onclick = function() {
@@ -180,7 +206,9 @@ function buttonEvents() {
                     console.log(`clicked addTask btn in project ${index}`);
                     // show child tasks
                     itemArr[2].style.display = 'flex';
-                    // add task input form
+                    // show add task form
+                    itemArr[0].children[4].style.display = 'flex';
+
                 }
             }
             if (btns[subIndex].classList.value === 'toggle') {
@@ -196,6 +224,32 @@ function buttonEvents() {
 
         })
     })
+
+    // main form submit
+    const mainForm = document.querySelector('.item-form');
+    mainForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const type = document.querySelector('#type').value;
+        const name = document.querySelector('#name').value;
+        const date = document.querySelector('#date').value;
+        const priority = document.querySelector('#priority').value;
+        const defaultText = 'edit me...';
+        const description = defaultText;
+        const notes = defaultText;
+
+        if (type === 'project') {
+            const newProj = new Project(name,description,date,priority,notes);
+            MAIN_PROJECT.additem(newProj);
+        } else if (type === 'task') {
+            const newTask = new Task(name,description,date,priority,notes);
+            MAIN_PROJECT.additem(newTask);
+        }
+
+        clearDisplay();
+        render();
+        buttonEvents();
+    })
+
 }
 
 function init() {

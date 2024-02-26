@@ -40,26 +40,30 @@ function createForm() {
     const body = document.querySelector('.main');
     
     const formDisplay = createBasicEl('div','form-display','','');
+    formDisplay.innerHTML = `
+    <div id='form-title-container'>
+        <h2 id='form-title'>What to do?...</h2>
+    </div>
+    `
     const form = createBasicEl('form','item-form','','');
 
     form.innerHTML += `
-    <h2 id='form-title'>What to do?...</h2>
-    <fieldset>
+    
         <label for='name'>Project Name: </label>
         <input type='text' id='name' maxlength='75' placeholder=' -- Enter text here -- '>
-    </fieldset>
-    <fieldset>
+    
+    
         <label for='date'>Date: </label>
         <input type='text' id='date' maxlength='25' placeholder=' -- mm/dd/yy -- '>
-    </fieldset>
-    <fieldset>
+    
+   
         <label for='priority'>Priority: </label>
             <select name='priority' id='priority'>
                 <option value='low'>Low</option>
                 <option value='mid'>Mid</option>
                 <option value='high'>High</option>
             </select>
-    </fieldset>
+    
     <button id='form-submit' type='submit'>Add item</button>
 
     `

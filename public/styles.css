@@ -10,3 +10,15 @@
 .green {
     background-color: lightgreen;
 }
+
+.form-display {
+    text-align: center;
+}
+
+.item-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}

@@ -68,6 +68,10 @@ function render() {
                 const dueDate = createEl('p','child-dueDate',`child-dueDate-${index}`,`${item['dueDate']}`);
                 const priority = createEl('p','child-prio',`child-prio-${index}`,`${item['priority']}`);
 
+                const info = createEl('div','child-info',`child-info-${index}`,'');
+                const description = createEl('p','child-description', `child-description-${index}`, `${item['description']}`);
+                const notes = createEl('p','child-description', `child-description-${index}`, `${item['notes']}`);
+                
                 const edit = createEl('button','child-edit',`child-edit-${index}`,'Edit');
                 const del = createEl('button','child-delete',`child-delete-${index}`,'Delete');
                 const toggle = createEl('button','child-toggle',`child-toggle-${index}`,'Toggle');
@@ -76,12 +80,16 @@ function render() {
                 header.appendChild(dueDate);
                 header.appendChild(priority);
 
+                info.appendChild(description);
+                info.appendChild(notes);
+
                 btns.appendChild(edit);
                 btns.appendChild(del);
                 btns.appendChild(toggle);
 
                 card.appendChild(header);
                 card.appendChild(btns);
+                card.appendChild(info);
 
                 childContainer.appendChild(card);
 
@@ -124,8 +132,42 @@ function buttonEvents() {
         const btns = Array.from(header[3].children);
         // console.log(header);
         const type = header[1].innerText;
-        // console.log(btns);
-        console.log(itemArr);
+        // console.log(type);
+        // console.log(itemArr);
+
+        // child elements of projects
+        // mainArr[n].items only if type is project
+        if (type === 'project') {
+            const child = Array.from(itemArr[2].children);
+            console.log(child);
+            child.forEach(function (childItem, childIndex, childArr) {
+                const childEl = Array.from(childItem.children);
+                console.log(childEl);
+                const childBtns = Array.from(childEl[1].children);
+                console.log(childBtns);
+                childBtns.forEach(function (subItem, subIndex, subArr) {
+                    if (childBtns[subIndex].classList.value === 'child-edit') {
+                        childBtns[subIndex].onclick = function() {
+                            console.log(`clicked edit btn in child item ${childIndex}`);
+                            // reveal child info
+                            childEl[2].style.display = 'flex';
+                        }
+                    }
+                    if (childBtns[subIndex].classList.value === 'child-delete') {
+                        childBtns[subIndex].onclick = function() {
+                            console.log(`clicked delete btn in child item ${childIndex}`)
+                        };
+                    }
+                    if (childBtns[subIndex].classList.value === 'child-toggle') {
+                        childBtns[subIndex].onclick = function() {
+                            console.log(`clicked toggle btn in child item ${childIndex}`)
+                        };
+                    }
+                })
+            })
+        }
+
+        // onclick methods for first level of mainArr
         btns.forEach(function (subItem,subIndex,subArr) {
             if (btns[subIndex].classList.value === 'edit') {
                 btns[subIndex].onclick = function() {
@@ -138,7 +180,7 @@ function buttonEvents() {
                     console.log(`clicked addTask btn in project ${index}`);
                     // show child tasks
                     itemArr[2].style.display = 'flex';
-                    // add task input
+                    // add task input form
                 }
             }
             if (btns[subIndex].classList.value === 'toggle') {

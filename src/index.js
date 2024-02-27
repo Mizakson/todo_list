@@ -131,7 +131,7 @@ function subRender(index) {
 }
 
 
-function buttonEvents() {
+function mainButtonEvents() {
     // button events for mainRender elements
     const display = document.querySelector('.display');
     const nodes = display.childNodes;
@@ -172,7 +172,7 @@ function buttonEvents() {
                         mainArr[index].editNotes(notes);
                         clearDisplay();
                         mainRender();
-                        buttonEvents();
+                        mainButtonEvents();
                     })
                 })
             }
@@ -198,7 +198,7 @@ function buttonEvents() {
                     MAIN_PROJECT.deleteItem(index);
                     clearDisplay();
                     mainRender();
-                    buttonEvents();
+                    mainButtonEvents();
                 });
 
 
@@ -224,7 +224,7 @@ function buttonEvents() {
         MAIN_PROJECT.additem(item);
         clearDisplay();
         mainRender();
-        buttonEvents();
+        mainButtonEvents();
     })
     
 
@@ -233,7 +233,7 @@ function buttonEvents() {
 function init() {
     pageOnLoad();
     mainRender();
-    buttonEvents();
+    mainButtonEvents();
 }
 
 init();

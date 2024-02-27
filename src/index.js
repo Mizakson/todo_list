@@ -303,8 +303,9 @@ function mainButtonEvents() {
             const tasks = Array.from(superItem.children[5].childNodes);
             tasks.forEach(function(subItem,subIndex,subArr) {
                 const btn = Array.from(subItem.children[1].children);
-                console.log(btn);
+                // console.log(btn);
                 const tasksArr = Array.from(superItem.children[5].children);
+                // console.log(tasksArr);
 
                 // view
                 btn[0].addEventListener("click", function() {
@@ -313,7 +314,32 @@ function mainButtonEvents() {
 
                 // edit
                 btn[1].addEventListener("click", function() {
-                    console.log('clicked edit');
+                    tasksArr[subIndex].children[3].classList.toggle('editable');
+                    const editTaskform = tasksArr[subIndex].children[3].children[0];
+                    console.log();
+                    editTaskform.addEventListener("submit",function(e) {
+                        e.preventDefault();
+                        e.stopImmediatePropagation();
+                        // name - 0, desc - 1, date - 2, prio - 3, notes - 4
+                        const name = editTaskform.children[0].value;
+                        const desc = editTaskform.children[1].value;
+                        const date = editTaskform.children[2].value;
+                        const prio = editTaskform.children[3].value;
+                        const notes = editTaskform.children[4].value;
+
+                        const currentTask = mainArr[superIndex].items[subIndex];
+                        currentTask.editName(name);
+                        currentTask.editDescription(desc);
+                        currentTask.editDueDate(date);
+                        currentTask.editPriority(prio);
+                        currentTask.editNotes(notes);
+                        clearDisplay();
+                        mainRender();
+                        subRender();
+                        mainButtonEvents();
+                    })
+
+
                 })
 
                 // toggle

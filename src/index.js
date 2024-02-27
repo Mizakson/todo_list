@@ -73,8 +73,8 @@ function mainRender() {
         const info = createEl('div','info',`info-${index}`,'');
         const description = createEl('p', 'description','',`Description: \n ${item['description']}`);
         const dueDate = createEl('p', 'dueDate','',`Date: \n ${item['dueDate']}`);
-        const priority = createEl('p', 'priority','',`Priority: \n ${item['description']}`);
-        const notes = createEl('p', 'notes','',`Notes: \n ${item['description']}`);
+        const priority = createEl('p', 'priority','',`Priority: \n ${item['priority']}`);
+        const notes = createEl('p', 'notes','',`Notes: \n ${item['notes']}`);
 
         info.appendChild(description);
         info.appendChild(dueDate);
@@ -156,7 +156,26 @@ function buttonEvents() {
                 subItem.addEventListener("click", function() {
                     arr[index].childNodes[3].classList.toggle('editable');
                     const editProjForm = arr[index].childNodes[3].childNodes[0];
-                    console.log(editProjForm);
+                    console.log(editProjForm.children);
+                    editProjForm.addEventListener("submit", function(e) {
+                        e.preventDefault();
+                        const name = editProjForm.children[0].value;
+                        const desc = editProjForm.children[1].value;
+                        const date = editProjForm.children[2].value;
+                        const prio = editProjForm.children[3].value;
+                        const notes = editProjForm.children[4].value;
+                        console.table(name,desc,date,prio,notes);
+                        mainArr[index].editName(name);
+                        mainArr[index].editDescription(desc);
+                        mainArr[index].editDueDate(date);
+                        mainArr[index].editPriority(prio);
+                        mainArr[index].editNotes(notes);
+                        console.table(mainArr[index])
+                        clearDisplay();
+                        mainRender();
+                        buttonEvents();
+                        // 1 - name, 3 - desc, 5 - dueDate, 7 - prio, 9 - notes
+                    })
                 })
             }
 

@@ -21,7 +21,7 @@ class Task {
     }
 
     editDueDate(dueDate) {
-        this.dueDate = dueDate
+        this.dueDate = dueDate;
     }
 
     editPriority(priority) {

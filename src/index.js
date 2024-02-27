@@ -57,11 +57,13 @@ function mainRender() {
         
         const btns = createEl('div','btns','','');
         const view = createEl('button','view',`${index}`,'View');
+        const edit = createEl('button','edit',`${index}`,'Edit');
         const toggle = createEl('button','toggle',`${index}`,'Toggle');
         const del = createEl('button','delete',`${index}`,'X');
         const add = createEl('button','add',`add-${index}`,'+');
         
         btns.appendChild(view);
+        btns.appendChild(edit);
         btns.appendChild(toggle);
         btns.appendChild(del);
         btns.appendChild(add);
@@ -81,8 +83,22 @@ function mainRender() {
 
         card.appendChild(info);
 
-        const formContainer = createEl('div','form-container', `form-container-${index}`,'');
-        formContainer.innerHTML = `
+        const editProjForm = createEl('div','form-edit-container', `form-edit-container-${index}`,'');
+        editProjForm.innerHTML = `<form class='proj-edit-form' id='proj-edit-form-${index}'>
+        <input type='text' class='proj-edit-name' id='proj-edit-name-${index}' maxlength='75' placeholder=' -- Name -- '>
+        <input type='text' class='proj-edit-description' id='proj-edit-description-${index}' maxlength='75' placeholder=' -- Description -- '>
+        <input type='text' class='proj-edit-dueDate' id='proj-edit-dueDate-${index}' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+        <input type='text' class='proj-edit-priority' id='proj-edit-priority-${index}' maxlength='10' placeholder=' -- Priority -- '>
+        <input type='text' class='proj-edit-notes' id='proj-edit-notes-${index}' maxlength='75' placeholder=' -- Notes -- '>
+        <button type='submit' id='proj-edit-submit-${index}'>Save Changes</button>
+        </form>
+
+        `
+        card.appendChild(editProjForm);
+
+        const childFormContainer = createEl('div','child-form-container', `child-form-container-${index}`,'');
+        childFormContainer.innerHTML = `
+        <form class='child-task-form' id='child-task-form-${index}'>
         <label for='task-name-${index}'>Task Name: </label>
         <input type='text' id='task-name-${index}' maxlength='75' placeholder=' -- Enter text here -- '>
         <label for='task-dueDate-${index}'>Date: </label>
@@ -94,9 +110,10 @@ function mainRender() {
                 <option value='high'>High</option>
             </select>
     <button id='task-form-submit-${index}' type='submit'>Add item</button>
+    </form>
         `;
 
-        card.appendChild(formContainer);
+        card.appendChild(childFormContainer);
 
 
         display.appendChild(card);
@@ -135,6 +152,14 @@ function buttonEvents() {
                 })
             }
 
+            if (subItem.classList.value === 'edit') {
+                subItem.addEventListener("click", function() {
+                    arr[index].childNodes[3].classList.toggle('editable');
+                    const editProjForm = arr[index].childNodes[3].childNodes[0];
+                    console.log(editProjForm);
+                })
+            }
+
             // toggle status for project
             else if (subItem.classList.value === 'toggle') {
                 subItem.addEventListener("click", function(){
@@ -146,7 +171,7 @@ function buttonEvents() {
             if (subItem.classList.value === 'add') {
                 // make addTask form visible
                 subItem.addEventListener("click", function() {
-                    const form = arr[index].childNodes[3];
+                    const form = arr[index].childNodes[4];
                     form.classList.toggle('active');
                 });
             }
@@ -164,6 +189,8 @@ function buttonEvents() {
 
         });
     });
+
+    const mainFormSubmitBtn = document.getElementById('form-submit');
 
 }
 

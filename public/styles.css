@@ -1,11 +1,11 @@
-.info, .form-edit-container, .child-form, .child-info {
+.info, .form-edit-container, .child-form, .child-info, .task-container, .child-task-form {
     display: none;
 }
 
 .active {
     display: flex;
     gap: 15px;
-    pointer-events: none;
+    padding: 20px;
 }
 
 .editable {
@@ -29,7 +29,7 @@
     justify-content: center;
 }
 
-.child-task-form, .proj-edit-form, .child-edit-form {
+.proj-edit-form, .child-edit-form {
     padding: 25px;
     display: flex;
     gap: 15px;

@@ -15,6 +15,7 @@ const NESTED_TASK = new Task('nest task','description here','8/6/29','high','jus
 const NESTED_TASK2 = new Task('nest task','description here','4/2/25','low','jjuusstt nneessttiinngg');
 DEFAULT_PROJECT.additem(NESTED_TASK);
 DEFAULT_PROJECT.additem(NESTED_TASK2);
+DEFAULT_PROJECT2.additem(NESTED_TASK);
 
 
 
@@ -61,12 +62,14 @@ function mainRender() {
         const toggle = createEl('button','toggle',`${index}`,'Toggle');
         const del = createEl('button','delete',`${index}`,'X');
         const add = createEl('button','add',`add-${index}`,'+');
+        const details = createEl('button','details',`details-${index}`,'Details');
         
         btns.appendChild(view);
         btns.appendChild(edit);
         btns.appendChild(toggle);
         btns.appendChild(del);
         btns.appendChild(add);
+        btns.appendChild(details);
 
         card.appendChild(btns)
 
@@ -122,62 +125,67 @@ function mainRender() {
     
 }
 
-function subRender(a) {
-    const proj = document.querySelector('.display').children[a];
-    const container = createEl('div','task-container', `task-container-${a}`,'');
-    // console.log(proj);
-    const arr = mainArr[a].items;
-    arr.forEach(function(item,index) {
-        const card = createEl('div','task',`task-${index}`,'');
-        
-        const header = createEl('div','child-header',`child-header-${index}`,'');
-        const name = createEl('h3', 'child-name', `child-name-${index}`,`${item['name']}`);
-        const date = createEl('p','child-dueDate', `child-dueDate-${index}`,`${item['dueDate']}`);
-        header.appendChild(name);
-        header.appendChild(date);
+function subRender() {
+    
+    mainArr.forEach(function(superItem,superIndex,superArr) {
+        const proj = document.querySelector('.display').children[superIndex];
+        const container = createEl('div','task-container', `task-container-${superIndex}`,'');
+        // console.log(proj);
+        const arr = mainArr[superIndex].items;
+        arr.forEach(function(item,index) {
+            const card = createEl('div','task',`task-${index}`,'');
+            
+            const header = createEl('div','child-header',`child-header-${index}`,'');
+            const name = createEl('h3', 'child-name', `child-name-${index}`,`${item['name']}`);
+            const date = createEl('p','child-dueDate', `child-dueDate-${index}`,`${item['dueDate']}`);
+            header.appendChild(name);
+            header.appendChild(date);
+    
+            const btns = createEl('div', 'child-btns',`child-btns${index}`,'');
+            const view = createEl('button','child-view',`child-view-${index}`,'View');
+            const toggle = createEl('button','child-toggle',`child-toggle-${index}`,'Toggle');
+            const edit = createEl('button','child-edit',`child-edit-${index}`,'Edit');
+            const del = createEl('button','child-delete',`child-delete-${index}`,'X');
+    
+            btns.appendChild(view);
+            btns.appendChild(edit);
+            btns.appendChild(toggle);
+            btns.appendChild(del);
+    
+            const editFormContainer = createEl('div','child-form',`child-form-${index}`,'');
+            const editForm = createEl('form','child-edit-form',`child-edit-form-${index}`,'');
+    
+            editForm.innerHTML = `
+            <input type='text' class='child-edit-name' id='child-edit-name-${index}' maxlength='75' placeholder=' -- Name -- '>
+            <input type='text' class='child-edit-description' id='child-edit-description-${index}' maxlength='75' placeholder=' -- Description -- '>
+            <input type='text' class='child-edit-dueDate' id='child-edit-dueDate-${index}' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+            <input type='text' class='child-edit-priority' id='child-edit-priority-${index}' maxlength='10' placeholder=' -- Priority -- '>
+            <input type='text' class='child-edit-notes' id='child-edit-notes-${index}' maxlength='75' placeholder=' -- Notes -- '>
+            <button type='submit' id='child-edit-submit-${index}'>Save Changes</button>
+            `
+    
+            editFormContainer.appendChild(editForm);
+            
+            const info = createEl('div', 'child-info', `child-info-${index}`,'');
+            const desc = createEl('p','child-description',`child-description-${index}`,`Description: \n ${item['description']}`);
+            const prio = createEl('p','child-priority',`child-priority-${index}`,`Priority: \n ${item['priority']}`);
+            const notes = createEl('p','child-notes',`child-notes-${index}`,`Notes: \n ${item['notes']}`);
+    
+            info.appendChild(desc);
+            info.appendChild(prio);
+            info.appendChild(notes);
+    
+            card.appendChild(header);
+            card.appendChild(btns);
+            card.appendChild(info);
+            card.appendChild(editFormContainer);
+    
+            container.appendChild(card);
+            proj.appendChild(container);
+        });
+    })
 
-        const btns = createEl('div', 'child-btns',`child-btns${index}`,'');
-        const view = createEl('button','child-view',`child-view-${index}`,'View');
-        const toggle = createEl('button','child-toggle',`child-toggle-${index}`,'Toggle');
-        const edit = createEl('button','child-edit',`child-edit-${index}`,'Edit');
-        const del = createEl('button','child-delete',`child-delete-${index}`,'X');
-
-        btns.appendChild(view);
-        btns.appendChild(edit);
-        btns.appendChild(toggle);
-        btns.appendChild(del);
-
-        const editFormContainer = createEl('div','child-form',`child-form-${index}`,'');
-        const editForm = createEl('form','child-edit-form',`child-edit-form-${index}`,'');
-
-        editForm.innerHTML = `
-        <input type='text' class='child-edit-name' id='child-edit-name-${index}' maxlength='75' placeholder=' -- Name -- '>
-        <input type='text' class='child-edit-description' id='child-edit-description-${index}' maxlength='75' placeholder=' -- Description -- '>
-        <input type='text' class='child-edit-dueDate' id='child-edit-dueDate-${index}' maxlength='25' placeholder=' -- mm/dd/yy -- '>
-        <input type='text' class='child-edit-priority' id='child-edit-priority-${index}' maxlength='10' placeholder=' -- Priority -- '>
-        <input type='text' class='child-edit-notes' id='child-edit-notes-${index}' maxlength='75' placeholder=' -- Notes -- '>
-        <button type='submit' id='child-edit-submit-${index}'>Save Changes</button>
-        `
-
-        editFormContainer.appendChild(editForm);
-        
-        const info = createEl('div', 'child-info', `child-info-${index}`,'');
-        const desc = createEl('p','child-description',`child-description-${index}`,`Description: \n ${item['description']}`);
-        const prio = createEl('p','child-priority',`child-priority-${index}`,`Priority: \n ${item['priority']}`);
-        const notes = createEl('p','child-notes',`child-notes-${index}`,`Notes: \n ${item['notes']}`);
-
-        info.appendChild(desc);
-        info.appendChild(prio);
-        info.appendChild(notes);
-
-        card.appendChild(header);
-        card.appendChild(btns);
-        card.appendChild(info);
-        card.appendChild(editFormContainer);
-
-        container.appendChild(card);
-        proj.appendChild(container);
-    });
+    
 }
 
 
@@ -195,10 +203,13 @@ function mainButtonEvents() {
             
             // toggle info for project
             if (subItem.classList.value === 'view') {
-                subItem.addEventListener("click",function() {
+                subItem.addEventListener("click",function(e) {
                     // console.log('clicked view', index);
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
                     const info = arr[index].childNodes[2];
                     info.classList.toggle('active');
+                    // console.log(arr[index]);
                 })
             }
 
@@ -227,6 +238,13 @@ function mainButtonEvents() {
                 })
             }
 
+            if (subItem.classList.value === 'details') {
+                subItem.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    arr[index].childNodes[5].classList.toggle('active');
+                })
+            }
+
             // toggle status for project
             else if (subItem.classList.value === 'toggle') {
                 subItem.addEventListener("click", function(){
@@ -238,7 +256,7 @@ function mainButtonEvents() {
             if (subItem.classList.value === 'add') {
                 // make addTask form visible
                 subItem.addEventListener("click", function() {
-                    const form = arr[index].childNodes[4];
+                    const form = arr[index].childNodes[4].children[0];
                     form.classList.toggle('active');
                 });
             }
@@ -254,7 +272,64 @@ function mainButtonEvents() {
 
             }
 
+
         });
+
+    });
+
+    // sub render events here
+    nodes.forEach(function(superItem,superIndex,superArr) {
+        const card = Array.from(superItem.children);
+        card.forEach(function(item,index,arr) {
+            if (item.classList.value === 'child-form-container') {
+                const form = item.children[0]
+                form.addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    const name = form.children[1].value;
+                    const date = form.children[1].value;
+                    const prio = form.children[1].value;
+                    const description = 'edit me...';
+                    const notes = 'edit me...';
+
+                    const newTask = new Task(name,description,date,prio,notes);
+                    const currentProj = mainArr[superIndex];
+                    currentProj.items.push(newTask);
+                    clearDisplay();
+                    mainRender();
+                    subRender();
+                    mainButtonEvents();
+                })
+            const tasks = Array.from(superItem.children[5].childNodes);
+            tasks.forEach(function(subItem,subIndex,subArr) {
+                const btn = Array.from(subItem.children[1].children);
+                console.log(btn);
+                const tasksArr = Array.from(superItem.children[5].children);
+
+                // view
+                btn[0].addEventListener("click", function() {
+                    tasksArr[subIndex].children[2].classList.toggle('active');
+                })
+
+                // edit
+                btn[1].addEventListener("click", function() {
+                    console.log('clicked edit');
+                })
+
+                // toggle
+                btn[2].addEventListener("click", function() {
+                    console.log('clicked toggle');
+                }) 
+                
+                // delete
+                btn[3].addEventListener("click", function() {
+                    console.log('clicked del');
+                })                
+
+            });
+
+            }
+        })
     });
 
     const mainForm = document.querySelector('.item-form');
@@ -276,6 +351,8 @@ function mainButtonEvents() {
         mainRender();
         mainButtonEvents();
     })
+
+    // const taskForm = 
     
 
 }
@@ -283,7 +360,7 @@ function mainButtonEvents() {
 function init() {
     pageOnLoad();
     mainRender();
-    subRender(0);
+    subRender();
     mainButtonEvents();
 }
 

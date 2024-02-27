@@ -146,7 +146,7 @@ function buttonEvents() {
             // toggle info for project
             if (subItem.classList.value === 'view') {
                 subItem.addEventListener("click",function() {
-                    console.log('clicked view', index);
+                    // console.log('clicked view', index);
                     const info = arr[index].childNodes[2];
                     info.classList.toggle('active');
                 })
@@ -207,7 +207,26 @@ function buttonEvents() {
         });
     });
 
-    const mainFormSubmitBtn = document.getElementById('form-submit');
+    const mainForm = document.querySelector('.item-form');
+    mainForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        // 1 name, 3 date, 5 prio
+        const defaultText = 'edit me...';
+
+        const name = mainForm.children[1].value;
+        const desc = defaultText;
+        const date = mainForm.children[3].value;
+        const prio = mainForm.children[5].value;
+        const notes = defaultText;
+
+        const item = new Project(name,desc,date,prio,notes);
+        MAIN_PROJECT.additem(item);
+        clearDisplay();
+        mainRender();
+        buttonEvents();
+    })
+    
 
 }
 

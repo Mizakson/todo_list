@@ -122,11 +122,61 @@ function mainRender() {
     
 }
 
-function subRender(index) {
-    const item = mainArr[i].items;
+function subRender(a) {
+    const proj = document.querySelector('.display').children[a];
+    const container = createEl('div','task-container', `task-container-${a}`,'');
+    // console.log(proj);
+    const arr = mainArr[a].items;
+    arr.forEach(function(item,index) {
+        const card = createEl('div','task',`task-${index}`,'');
+        
+        const header = createEl('div','child-header',`child-header-${index}`,'');
+        const name = createEl('h3', 'child-name', `child-name-${index}`,`${item['name']}`);
+        const date = createEl('p','child-dueDate', `child-dueDate-${index}`,`${item['dueDate']}`);
+        header.appendChild(name);
+        header.appendChild(date);
 
-    item.forEach(function (item,index,arr) {
+        const btns = createEl('div', 'child-btns',`child-btns${index}`,'');
+        const view = createEl('button','child-view',`child-view-${index}`,'View');
+        const toggle = createEl('button','child-toggle',`child-toggle-${index}`,'Toggle');
+        const edit = createEl('button','child-edit',`child-edit-${index}`,'Edit');
+        const del = createEl('button','child-delete',`child-delete-${index}`,'X');
 
+        btns.appendChild(view);
+        btns.appendChild(edit);
+        btns.appendChild(toggle);
+        btns.appendChild(del);
+
+        const editFormContainer = createEl('div','child-form',`child-form-${index}`,'');
+        const editForm = createEl('form','child-edit-form',`child-edit-form-${index}`,'');
+
+        editForm.innerHTML = `
+        <input type='text' class='child-edit-name' id='child-edit-name-${index}' maxlength='75' placeholder=' -- Name -- '>
+        <input type='text' class='child-edit-description' id='child-edit-description-${index}' maxlength='75' placeholder=' -- Description -- '>
+        <input type='text' class='child-edit-dueDate' id='child-edit-dueDate-${index}' maxlength='25' placeholder=' -- mm/dd/yy -- '>
+        <input type='text' class='child-edit-priority' id='child-edit-priority-${index}' maxlength='10' placeholder=' -- Priority -- '>
+        <input type='text' class='child-edit-notes' id='child-edit-notes-${index}' maxlength='75' placeholder=' -- Notes -- '>
+        <button type='submit' id='child-edit-submit-${index}'>Save Changes</button>
+        `
+
+        editFormContainer.appendChild(editForm);
+        
+        const info = createEl('div', 'child-info', `child-info-${index}`,'');
+        const desc = createEl('p','child-description',`child-description-${index}`,`Description: \n ${item['description']}`);
+        const prio = createEl('p','child-priority',`child-priority-${index}`,`Priority: \n ${item['priority']}`);
+        const notes = createEl('p','child-notes',`child-notes-${index}`,`Notes: \n ${item['notes']}`);
+
+        info.appendChild(desc);
+        info.appendChild(prio);
+        info.appendChild(notes);
+
+        card.appendChild(header);
+        card.appendChild(btns);
+        card.appendChild(info);
+        card.appendChild(editFormContainer);
+
+        container.appendChild(card);
+        proj.appendChild(container);
     });
 }
 
@@ -233,6 +283,7 @@ function mainButtonEvents() {
 function init() {
     pageOnLoad();
     mainRender();
+    subRender(0);
     mainButtonEvents();
 }
 

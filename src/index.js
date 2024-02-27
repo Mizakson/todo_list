@@ -11,10 +11,8 @@ const mainArr = MAIN_PROJECT.items;
 MAIN_PROJECT.additem(DEFAULT_PROJECT);
 MAIN_PROJECT.additem(DEFAULT_PROJECT2);
 
-const NESTED_TASK = new Task('nest task','description here','8/6/29','high','just nesting');
-const NESTED_TASK2 = new Task('nest task','description here','4/2/25','low','jjuusstt nneessttiinngg');
+const NESTED_TASK = new Task('default task','edit me...','12/31/99','low','invent time travel');
 DEFAULT_PROJECT.additem(NESTED_TASK);
-DEFAULT_PROJECT.additem(NESTED_TASK2);
 DEFAULT_PROJECT2.additem(NESTED_TASK);
 
 
@@ -344,12 +342,17 @@ function mainButtonEvents() {
 
                 // toggle
                 btn[2].addEventListener("click", function() {
-                    console.log('clicked toggle');
+                    mainArr[superIndex].items[subIndex].status = !mainArr[superIndex].items[subIndex].status;
+                    tasksArr[subIndex].classList.toggle('green');
                 }) 
                 
                 // delete
                 btn[3].addEventListener("click", function() {
-                    console.log('clicked del');
+                    mainArr[superIndex].deleteItem(subIndex);
+                    clearDisplay();
+                    mainRender();
+                    subRender();
+                    mainButtonEvents();
                 })                
 
             });
@@ -373,8 +376,10 @@ function mainButtonEvents() {
 
         const item = new Project(name,desc,date,prio,notes);
         MAIN_PROJECT.additem(item);
+        item.additem(NESTED_TASK);
         clearDisplay();
         mainRender();
+        subRender();
         mainButtonEvents();
     })
 

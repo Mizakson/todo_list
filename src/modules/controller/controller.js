@@ -1,4 +1,4 @@
-import { arr } from "./model";
+import { arr } from "../model/model";
 
 // modifies arr
 export const arrController = (function () {

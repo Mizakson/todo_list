@@ -20,6 +20,10 @@ class Task {
         this.dueDate = x;
     }
 
+    editPriority(x) {
+        this.priority = x;
+    }
+
     toggleStatus() {
         this.status = !this.status;
     }

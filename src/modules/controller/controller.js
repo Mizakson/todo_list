@@ -12,6 +12,10 @@ export const arrController = (function () {
         arr.splice(index,1);
     }
 
-    return { addProject, deleteProject }
+    const getProject = (index) => {
+        console.log(arr[index]);
+    }
+
+    return { addProject, deleteProject, getProject }
 
 })();

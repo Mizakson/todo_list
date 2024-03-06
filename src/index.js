@@ -1,6 +1,5 @@
 import { arr } from "./modules/model/model";
-import { addDefaultData } from "./modules/model/defaultData";
+import { arrController } from "./modules/controller/controller";
+import { config } from "./modules/view/view";
 
-// view test data
-addDefaultData();
-console.log(arr);
+config.pageOnLoad();

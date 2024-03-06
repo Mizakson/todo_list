@@ -3,7 +3,7 @@ export const config = (function () {
     const content = document.querySelector('.content');
 
     const createAppHeader = () => {
-        let appHeaderContainer = uiMethods.createContainer('app-header');
+        let appHeaderContainer = uiMethods.createContainer('app-header','');
         let appTitle = uiMethods.createEl('h1','app-title','','To Do List App');
         let appAbout = uiMethods.createEl('h4','app-about','','Odin Project JavaScript Course Project 4');
         let appCredit = uiMethods.createEl('p','app-credit','','A program by Mizakson');
@@ -24,6 +24,8 @@ export const config = (function () {
         header.appendChild(formTitle);
         container.appendChild(header);
         
+        let formContainer = uiMethods.createContainer('add-project-form-container','');
+
         let form = uiMethods.createEl('form','add-project-form','','');
         form.innerHTML = `
         
@@ -33,8 +35,8 @@ export const config = (function () {
         <button type='submit' id='add-project-submit'>Create Project</button>
 
         `
-
-        container.appendChild(form);
+        formContainer.appendChild(form);
+        container.appendChild(formContainer);
         content.appendChild(container);
 
     }

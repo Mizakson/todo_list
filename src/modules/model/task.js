@@ -1,6 +1,4 @@
-import Project from "./project";
-
-class Task extends Project {
+class Task {
     constructor(title, description, dueDate, priority) {
         super(title);
         this.description = description;
@@ -9,6 +7,23 @@ class Task extends Project {
         this.status = false;
         this.type = 'task';
     }
+
+    editTitle(x) {
+        this.title = x;
+    }
+
+    editDescription(x) {
+        this.description = x;
+    }
+
+    editDueDate(x) {
+        this.dueDate = x;
+    }
+
+    toggleStatus() {
+        this.status = !this.status;
+    }
+
 }
 
 export default Task;

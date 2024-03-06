@@ -5,3 +5,5 @@ class Project {
         this.type = 'project';
     }
 }
+
+export default Project;

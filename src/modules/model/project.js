@@ -3,6 +3,7 @@ class Project {
         this.title = title;
         this.status = false;
         this.type = 'project';
+        this.items = [];
     }
 }
 

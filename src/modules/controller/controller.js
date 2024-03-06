@@ -1,4 +1,5 @@
 import { arr } from "../model/model";
+import Project from "../model/project";
 
 // modifies arr
 export const arrController = (function () {

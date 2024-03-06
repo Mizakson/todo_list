@@ -10,3 +10,5 @@ class Task extends Project {
         this.type = 'task';
     }
 }
+
+export default Task;

@@ -26,4 +26,16 @@ body, .app-header {
     display: flex;
     gap: 25px;
     align-items: center;
+    padding-bottom: 50px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+}
+
+.card-header, .project-btns {
+    padding: 5px;
 }

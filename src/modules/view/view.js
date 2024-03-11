@@ -78,6 +78,7 @@ export const config = (function () {
             btns.innerHTML = `
             <button class='project-details'>Details</button>
             <button class='project-delete'>X</button>
+            <button class='add-task'>Add Task</button>
             `
             card.appendChild(btns);
 

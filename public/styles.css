@@ -2,12 +2,16 @@ body {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.add-task-form-container {
+.add-task-form-container, .tasks {
     display: none;
 }
 
 .active {
     display: flex;
+}
+
+.completed {
+    background-color: lightgreen;
 }
 
 button, input {
@@ -28,7 +32,6 @@ body, .app-header {
 .add-project-form {
     display: flex;
     gap: 10px;
-    
     align-items: center;
 }
 
@@ -54,7 +57,7 @@ body, .app-header {
     display: flex;
     align-items: center;
     gap: 25px;
-    border: 1px dashed black;
+    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
 }

@@ -11,11 +11,19 @@ export var btnEvents = (function () {
             
             // 0 - details, 1 - add task, 2 - delete, 3 - toggle 
 
-            btns[1].addEventListener("click", function(e) {
+            
+
+            btns[1].addEventListener("click", function() {
                 projectEls[1].classList.toggle('active');
             })
 
-            console.log(btns);
+
+            btns[3].addEventListener("click", function() {
+                projectEls[0].classList.toggle('completed');
+                // toggle status here
+            })
+
+    
         })
     }
 

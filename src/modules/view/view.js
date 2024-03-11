@@ -74,6 +74,12 @@ export const config = (function () {
             let card = uiMethods.createContainer('card',`card-${i}`);
             let header = uiMethods.createEl('h4','card-header','',`${parsedProj['title']}`);
             card.appendChild(header);
+            let btns = uiMethods.createContainer('project-btns','');
+            btns.innerHTML = `
+            <button class='project-details'>Details</button>
+            <button class='project-delete'>X</button>
+            `
+            card.appendChild(btns);
 
             document.querySelector('.display').appendChild(card);
 

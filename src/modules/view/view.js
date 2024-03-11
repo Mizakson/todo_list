@@ -43,7 +43,7 @@ export const config = (function () {
 
 
     const createDisplay = () => {
-        let display = uiMethods.createContainer('display');
+        let display = uiMethods.createContainer('display','');
         content.appendChild(display);
     }
 
@@ -55,12 +55,15 @@ export const config = (function () {
     }
 
 
-    const render = () => {
+    const defaultRender = () => {
+        console.log(document.querySelector('.display'));
+    }   
 
+    const clearDisplay = () => {
+        document.querySelector('.display').innerHTML = "";
     }
 
-
-    return { pageOnLoad, render }
+    return { pageOnLoad, defaultRender, clearDisplay }
 
 })();
 

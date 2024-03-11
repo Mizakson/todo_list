@@ -72,16 +72,39 @@ export const config = (function () {
             arr.push(parsedProj);
 
             let card = uiMethods.createContainer('card',`card-${i}`);
-            let header = uiMethods.createEl('h4','card-header','',`${parsedProj['title']}`);
-            card.appendChild(header);
+            let header = uiMethods.createContainer('card-header','');
+            let projText = uiMethods.createEl('h4','card-header-text','',`${parsedProj['title']}`);
+            header.appendChild(projText);
+            
             let btns = uiMethods.createContainer('project-btns','');
             btns.innerHTML = `
             <button class='project-details'>Details</button>
             <button class='project-delete'>X</button>
             <button class='add-task'>Add Task</button>
             `
-            card.appendChild(btns);
+            header.appendChild(btns);
+            card.appendChild(header);
 
+            let addTaskFormContainer = uiMethods.createContainer('add-task-form-container','');
+            addTaskFormContainer.innerHTML = `
+            <form class='add-task-form' id='add-task-form-${i}'>
+            <input type='text' maxlength='35' placeholder=' -- Task Title -- ' id='add-task-title-${i}'>
+            <input type='text' maxlength='35' placeholder=' -- Task Description -- ' id='add-task-description-${i}'>
+            <input type='text' maxlength='35' placeholder=' -- mm/dd/yy -- ' id='add-task-dueDate-${i}'>
+            <input type='text' maxlength='35' placeholder=' -- Task Priority -- ' id='add-task-priority-${i}'>
+    
+            <button type='submit' id='add-task-submit-${i}'>Create Project</button>
+            
+            </form>
+            `
+            card.appendChild(addTaskFormContainer);
+
+            let tasks = uiMethods.createContainer('tasks',`tasks-${i}`);
+
+            // render tasks in each project
+
+            card.appendChild(tasks);
+            
             document.querySelector('.display').appendChild(card);
 
           }

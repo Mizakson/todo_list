@@ -12,17 +12,19 @@ const app = (function () {
     // check storage
     if (localStorage.length === 0) {
         console.log('empty', storageState);
+        storageMethods.saveToStorage();
         
     }
     else if (localStorage.length > 0) {
         storageState = true;
         console.log('not empty', storageState);
         config.nonEmptyRender();
-        // btnEvents.projectBtnEvents();
+        btnEvents.projectBtnEvents();
+        storageMethods.saveToStorage();
     }
 
-    storageMethods.saveToStorage();
-    btnEvents.projectBtnEvents();
+    
+    
 
 
 })();

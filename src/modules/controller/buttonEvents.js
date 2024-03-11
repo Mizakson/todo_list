@@ -1,3 +1,5 @@
+import { config } from "../view/view";
+
 export var btnEvents = (function () {
     
     const projectBtnEvents = () => {
@@ -11,10 +13,24 @@ export var btnEvents = (function () {
             
             // 0 - details, 1 - add task, 2 - delete, 3 - toggle 
 
-            
+            // displays all tasks
+            btns[0].addEventListener("click", function() {
+                console.log(projectEls);
+                projectEls[2].classList.toggle('active');
+            })
 
+            // display add task form
             btns[1].addEventListener("click", function() {
                 projectEls[1].classList.toggle('active');
+            })
+
+            btns[2].addEventListener("click", function() {
+                let name = header[0].innerText;
+                let delItem = localStorage.getItem(name);
+                localStorage.removeItem(name);  
+                config.clearDisplay();
+                config.nonEmptyRender();
+                projectBtnEvents();        
             })
 
 
@@ -23,7 +39,7 @@ export var btnEvents = (function () {
                 // toggle status here
             })
 
-    
+            
         })
     }
 

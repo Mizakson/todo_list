@@ -1,5 +1,4 @@
 import Project from "./project";
-import { storageState } from "./model";
 
 export const storageMethods = (function () {
 
@@ -13,8 +12,6 @@ export const storageMethods = (function () {
 
             let str = JSON.stringify(newProj);
             localStorage.setItem(`${newTitle}`, str);
-
-            storageState = true;
 
         })
     }

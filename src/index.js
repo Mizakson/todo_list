@@ -4,6 +4,7 @@ import { arrController } from "./modules/controller/controller";
 import { config, uiMethods } from "./modules/view/view";
 import Project from "./modules/model/project";
 import { storageMethods } from "./modules/model/storage";
+import { btnEvents } from "./modules/controller/buttonEvents";
 
 const app = (function () {
     config.pageOnLoad();
@@ -17,8 +18,11 @@ const app = (function () {
         storageState = true;
         console.log('not empty', storageState);
         config.nonEmptyRender();
+        // btnEvents.projectBtnEvents();
     }
 
     storageMethods.saveToStorage();
+    btnEvents.projectBtnEvents();
+
 
 })();

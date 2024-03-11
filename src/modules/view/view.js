@@ -79,8 +79,9 @@ export const config = (function () {
             let btns = uiMethods.createContainer('project-btns','');
             btns.innerHTML = `
             <button class='project-details'>Details</button>
-            <button class='project-delete'>X</button>
             <button class='add-task'>Add Task</button>
+            <button class='project-delete'>X</button>
+            <button class='project-toggle'>Toggle</button>
             `
             header.appendChild(btns);
             card.appendChild(header);

@@ -8,4 +8,5 @@ import { storageMethods } from "./modules/model/storage";
 const app = (function () {
     config.pageOnLoad();
     storageMethods.checkStorage();
+    storageMethods.saveToStorage();
 })();

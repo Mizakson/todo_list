@@ -58,8 +58,7 @@ export const config = (function () {
 
     // only blank render when storage is empty
     const defaultRender = () => {
-        console.log(localStorage.length); 
-        console.log(storageState);
+        console.log('localStorage is empty',storageState);
     }   
 
     const clearDisplay = () => {

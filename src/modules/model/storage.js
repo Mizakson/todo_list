@@ -3,7 +3,15 @@ export const storageMethods = (function () {
         console.log(localStorage.length);
     }
 
+    const saveToStorage = () => {
+        const form = document.querySelector('.add-project-form');
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            console.log(document.getElementById('add-project-title').value);
+        })
+    }
 
-    return { checkStorage };
+    return { checkStorage, saveToStorage };
 
 })();

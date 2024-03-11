@@ -1,3 +1,5 @@
+import Project from "./project";
+
 export const storageMethods = (function () {
     const checkStorage = () => {
         console.log(localStorage.length);
@@ -8,7 +10,12 @@ export const storageMethods = (function () {
         form.addEventListener("submit", function(e) {
             e.preventDefault();
             e.stopImmediatePropagation();
-            console.log(document.getElementById('add-project-title').value);
+            let newTitle = document.getElementById('add-project-title').value;
+            let newProj = new Project(newTitle);
+
+            let str = JSON.stringify(newProj);
+            localStorage.setItem(`${newTitle}`, str);
+
         })
     }
 

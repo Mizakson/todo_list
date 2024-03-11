@@ -16,8 +16,8 @@ const app = (function () {
     else if (localStorage.length > 0) {
         storageState = true;
         console.log('not empty', storageState);
-        
-        // nonEmptyRender here
+
+        config.nonEmptyRender();
     }
 
 })();

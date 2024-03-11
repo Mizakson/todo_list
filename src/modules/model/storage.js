@@ -1,4 +1,5 @@
 import Project from "./project";
+import { config } from "../view/view";
 
 export const storageMethods = (function () {
 
@@ -12,6 +13,9 @@ export const storageMethods = (function () {
 
             let str = JSON.stringify(newProj);
             localStorage.setItem(`${newTitle}`, str);
+
+            config.clearDisplay();
+            config.nonEmptyRender();
 
         })
     }

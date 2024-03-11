@@ -1,5 +1,5 @@
 // where all projects are stored
-export const arr = [];
+export var arr = [];
 
 // empty storage = false, non-empty = true
 export var storageState = false;

@@ -1,4 +1,6 @@
 import { storageState } from "../model/model";
+import Project from "../model/project";
+import { arr } from "../model/model";
 
 export const config = (function () {
 
@@ -63,8 +65,19 @@ export const config = (function () {
 
     
     const nonEmptyRender = () => {
-        console.log(localStorage.length);
-        console.log(storageState);
+        for (let i = 0; i < localStorage.length; i++) {
+            let projectVal = localStorage.getItem(localStorage.key(i));
+            let parsedProj = JSON.parse(projectVal);
+            Object.setPrototypeOf(projectVal,Project);
+            arr.push(parsedProj);
+
+            let card = uiMethods.createContainer('card',`card-${i}`);
+            let header = uiMethods.createEl('h4','card-header','',`${parsedProj['title']}`);
+            card.appendChild(header);
+
+            document.querySelector('.display').appendChild(card);
+
+          }
     }
 
 
@@ -72,7 +85,7 @@ export const config = (function () {
         document.querySelector('.display').innerHTML = "";
     }
 
-    return { pageOnLoad, defaultRender, clearDisplay }
+    return { pageOnLoad, defaultRender, nonEmptyRender, clearDisplay }
 
 })();
 

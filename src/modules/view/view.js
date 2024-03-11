@@ -1,3 +1,5 @@
+import { storageState } from "../model/model";
+
 export const config = (function () {
 
     const content = document.querySelector('.content');
@@ -54,9 +56,10 @@ export const config = (function () {
         createDisplay();
     }
 
-
+    // only blank render when storage is empty
     const defaultRender = () => {
-        console.log(document.querySelector('.display'));
+        console.log(localStorage.length); 
+        console.log(storageState);
     }   
 
     const clearDisplay = () => {

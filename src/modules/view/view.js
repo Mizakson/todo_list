@@ -61,6 +61,13 @@ export const config = (function () {
         console.log('localStorage is empty',storageState);
     }   
 
+    
+    const nonEmptyRender = () => {
+        console.log(localStorage.length);
+        console.log(storageState);
+    }
+
+
     const clearDisplay = () => {
         document.querySelector('.display').innerHTML = "";
     }

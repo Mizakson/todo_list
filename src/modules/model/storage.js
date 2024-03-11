@@ -1,9 +1,7 @@
 import Project from "./project";
+import { storageState } from "./model";
 
 export const storageMethods = (function () {
-    const checkStorage = () => {
-        console.log(localStorage.length);
-    }
 
     const saveToStorage = () => {
         const form = document.querySelector('.add-project-form');
@@ -16,9 +14,11 @@ export const storageMethods = (function () {
             let str = JSON.stringify(newProj);
             localStorage.setItem(`${newTitle}`, str);
 
+            storageState = true;
+
         })
     }
 
-    return { checkStorage, saveToStorage };
+    return { saveToStorage };
 
 })();

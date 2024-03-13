@@ -1,4 +1,6 @@
 import { config } from "../view/view";
+import { arr } from "../model/model";
+import Project from "../model/project";
 
 export var btnEvents = (function () {
     
@@ -32,10 +34,22 @@ export var btnEvents = (function () {
                 projectBtnEvents();        
             })
 
-
+            // update status 
             btns[3].addEventListener("click", function() {
-                projectEls[0].classList.toggle('completed');
+                let name = header[0].innerText;
+                let prevStr = localStorage.getItem(name);
+                let prevItem = JSON.parse(prevStr);
+                prevItem.status = !prevItem.status;
                 
+                let newStr = JSON.stringify(prevItem);
+                localStorage.setItem(name,newStr);
+
+                let newItem = JSON.parse(newStr);
+                
+                arr.splice(index,1,newItem);
+                Object.setPrototypeOf(newItem, Project);
+                console.log(arr);
+
             })
 
             

@@ -48,7 +48,7 @@ export var btnEvents = (function () {
                 
                 arr.splice(index,1,newItem);
                 Object.setPrototypeOf(newItem, Project);
-                console.log(arr);
+                console.log(`Project-${name}: status -> ${newItem.status}`);
 
             })
 

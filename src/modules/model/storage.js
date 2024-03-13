@@ -15,6 +15,9 @@ export const storageMethods = (function () {
             let newTitle = document.getElementById('add-project-title').value;
             let newProj = new Project(newTitle);
 
+            let defaultTask = new Task('default task','edit me...','12/31/24','low');
+            newProj.addTask(defaultTask);
+
             let str = JSON.stringify(newProj);
             localStorage.setItem(`${newTitle}`, str);
 

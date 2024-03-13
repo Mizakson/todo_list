@@ -26,7 +26,6 @@ export var btnEvents = (function () {
 
             btns[2].addEventListener("click", function() {
                 let name = header[0].innerText;
-                let delItem = localStorage.getItem(name);
                 localStorage.removeItem(name);  
                 config.clearDisplay();
                 config.nonEmptyRender();
@@ -36,7 +35,7 @@ export var btnEvents = (function () {
 
             btns[3].addEventListener("click", function() {
                 projectEls[0].classList.toggle('completed');
-                // toggle status here
+                
             })
 
             

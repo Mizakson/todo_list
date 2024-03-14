@@ -71,3 +71,8 @@ body, .app-header {
     align-items: center;
     gap: 10px;
 }
+
+.tasks {
+    gap: 15px;
+    align-items: center;
+}

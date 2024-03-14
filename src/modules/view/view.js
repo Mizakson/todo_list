@@ -107,7 +107,17 @@ export const config = (function () {
             for (let j = 0; j < arr[i].items.length; j++) {
                 let currentTask = arr[i].items[j];
                 Object.setPrototypeOf(currentTask,Task);
-                console.log(arr[i].items[j]);
+                let vals = Object.values(currentTask);
+                tasks.innerHTML = ` 
+                <h4>${vals[0]}</h4>
+                <p>${vals[2]}</p>
+                <div class='task-btns'>
+                    <button class='task-details'>Details</button>
+                    <button class='edit-task'>Edit Task</button>
+                    <button class='task-delete'>X</button>
+                    <button class='task-toggle'>Toggle</button>
+                </div>
+                `;
             }
             card.appendChild(tasks);
             

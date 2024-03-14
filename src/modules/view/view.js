@@ -1,6 +1,7 @@
 import { storageState } from "../model/model";
 import Project from "../model/project";
 import { arr } from "../model/model";
+import Task from "../model/task";
 
 export const config = (function () {
 
@@ -103,7 +104,11 @@ export const config = (function () {
             let tasks = uiMethods.createContainer('tasks',`tasks-${i}`);
 
             // render tasks in each project
-
+            for (let j = 0; j < arr[i].items.length; j++) {
+                let currentTask = arr[i].items[j];
+                Object.setPrototypeOf(currentTask,Task);
+                console.log(arr[i].items[j]);
+            }
             card.appendChild(tasks);
             
             document.querySelector('.display').appendChild(card);

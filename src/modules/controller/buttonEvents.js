@@ -1,6 +1,8 @@
 import { config } from "../view/view";
 import { arr } from "../model/model";
 import Project from "../model/project";
+import Task from "../model/task";
+import { storageMethods } from "../model/storage";
 
 export var btnEvents = (function () {
     
@@ -24,6 +26,28 @@ export var btnEvents = (function () {
             // display add task form
             btns[1].addEventListener("click", function() {
                 projectEls[1].classList.toggle('active');
+                let taskForm = projectEls[1].children[0];
+                console.log(taskForm.children);
+                
+                taskForm.addEventListener("submit", function(e) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+
+                    // 0 - title, 1 - desc, 2 - dueDate, 3 - priority
+                    let title = taskForm.children[0].value;
+                    let desc = taskForm.children[1].value;
+                    let dueDate = taskForm.children[2].value;
+                    let prio = taskForm.children[3].value;
+
+                    const newTask = new Task(title, desc, dueDate, prio);
+
+                    storageMethods.updateStorage(index, newTask);
+
+                    config.clearDisplay();
+                    config.nonEmptyRender();
+                    btnEvents.projectBtnEvents();
+                })
+
             })
 
             btns[2].addEventListener("click", function() {

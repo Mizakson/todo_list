@@ -30,9 +30,22 @@ export const storageMethods = (function () {
     }
 
 
-    // update either project, or task (project.items[index])
-    const updateStorage = (index) => {
-        console.log(localStorage.getItem(localStorage.key(index)));
+
+
+    // update task (project.items[index])
+    const updateStorage = (index, newTask) => {
+        const currentProjectKey = localStorage.getItem(localStorage.key(index));
+        const currentProject = arr[index];
+
+        const taskForm = document.querySelector(`#add-task-form-${index}`);
+        console.log(taskForm);
+        
+        currentProject.items.push(newTask);
+        console.log(currentProject);
+
+        const newStr = JSON.stringify(currentProject);
+        localStorage.setItem(currentProject['title'],newStr);
+
     }
 
     return { saveToStorage, updateStorage };

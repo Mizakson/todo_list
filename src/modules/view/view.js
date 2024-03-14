@@ -69,7 +69,7 @@ export const config = (function () {
         for (let i = 0; i < localStorage.length; i++) {
             let projectVal = localStorage.getItem(localStorage.key(i));
             let parsedProj = JSON.parse(projectVal);
-            Object.setPrototypeOf(projectVal,Project);
+            Object.setPrototypeOf(parsedProj,Project);
             arr.push(parsedProj);
 
             let card = uiMethods.createContainer('card',`card-${i}`);
@@ -104,21 +104,21 @@ export const config = (function () {
             let tasks = uiMethods.createContainer('tasks',`tasks-${i}`);
 
             // render tasks in each project
-            for (let j = 0; j < arr[i].items.length; j++) {
-                let currentTask = arr[i].items[j];
-                Object.setPrototypeOf(currentTask,Task);
-                let vals = Object.values(currentTask);
-                tasks.innerHTML = ` 
-                <h4>${vals[0]}</h4>
-                <p>${vals[2]}</p>
-                <div class='task-btns'>
-                    <button class='task-details'>Details</button>
-                    <button class='edit-task'>Edit Task</button>
-                    <button class='task-delete'>X</button>
-                    <button class='task-toggle'>Toggle</button>
-                </div>
-                `;
-            }
+            // for (let j = 0; j < arr[i].items.length; j++) {
+            //     let currentTask = arr[i].items[j];
+            //     Object.setPrototypeOf(currentTask,Task);
+            //     let vals = Object.values(currentTask);
+            //     tasks.innerHTML = ` 
+            //     <h4>${vals[0]}</h4>
+            //     <p>${vals[2]}</p>
+            //     <div class='task-btns'>
+            //         <button class='task-details'>Details</button>
+            //         <button class='edit-task'>Edit Task</button>
+            //         <button class='task-delete'>X</button>
+            //         <button class='task-toggle'>Toggle</button>
+            //     </div>
+            //     `;
+            // }
             card.appendChild(tasks);
             
             document.querySelector('.display').appendChild(card);

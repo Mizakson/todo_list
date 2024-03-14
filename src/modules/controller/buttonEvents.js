@@ -41,7 +41,7 @@ export var btnEvents = (function () {
 
                     const newTask = new Task(title, desc, dueDate, prio);
 
-                    storageMethods.updateStorage(index, newTask);
+                    storageMethods.updateTaskStorage(index, newTask);
 
                     config.clearDisplay();
                     config.nonEmptyRender();

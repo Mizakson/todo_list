@@ -102,23 +102,29 @@ export const config = (function () {
             card.appendChild(addTaskFormContainer);
 
             let tasks = uiMethods.createContainer('tasks',`tasks-${i}`);
+            // console.log(parsedProj.items);
 
             // render tasks in each project
-            // for (let j = 0; j < arr[i].items.length; j++) {
-            //     let currentTask = arr[i].items[j];
-            //     Object.setPrototypeOf(currentTask,Task);
-            //     let vals = Object.values(currentTask);
-            //     tasks.innerHTML = ` 
-            //     <h4>${vals[0]}</h4>
-            //     <p>${vals[2]}</p>
-            //     <div class='task-btns'>
-            //         <button class='task-details'>Details</button>
-            //         <button class='edit-task'>Edit Task</button>
-            //         <button class='task-delete'>X</button>
-            //         <button class='task-toggle'>Toggle</button>
-            //     </div>
-            //     `;
-            // }
+            parsedProj.items.forEach(function(subItem,subIndex) {
+                let childHeaderContainer = uiMethods.createContainer('task-card',`task-card-${subIndex}`);
+                childHeaderContainer.innerHTML = `
+                    <div class='task-card' id='task-card-${subIndex}'>
+                        <h4 class='task-title-text'>${subItem['title']}</h4>
+                        <p class='task-'>${subItem['dueDate']}</p>
+                        <div class='task-btns'>
+                            <button class='task-details'>Details</button>
+                            <button class='edit-task'>Edit Task</button>
+                            <button class='task-delete'>X</button>
+                            <button class='task-toggle'>Toggle</button>
+                        </div>
+                    </div>
+                    `;
+                
+                // edit form here
+
+                tasks.appendChild(childHeaderContainer);
+            })
+
             card.appendChild(tasks);
             
             document.querySelector('.display').appendChild(card);

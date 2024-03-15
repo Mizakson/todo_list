@@ -58,7 +58,7 @@ export var btnEvents = (function () {
                 projectBtnEvents();        
             })
 
-            // update status 
+            // toggle status 
             btns[3].addEventListener("click", function() {
                 let name = header[0].innerText;
                 let prevStr = localStorage.getItem(name);
@@ -82,13 +82,15 @@ export var btnEvents = (function () {
                 const taskCardEls = Array.from(subItem.children);
 
                 // 0 - task card (title, dueDate, buttons-div ), 1 - details, 2 - edit task form
-                console.log(taskCardEls);
+                
                 const singleCard = taskCardEls[0];
                 const singleDetails = taskCardEls[1];
                 const singleEditForm = taskCardEls[2];
 
                 const singleCardEls = Array.from(singleCard.children);
                 const singleCardBtns = Array.from(singleCardEls[1].children);
+
+                let childTaskName = singleCardEls[0].children[0].innerText;
 
                 // console.log(singleCardBtns);
 
@@ -101,14 +103,16 @@ export var btnEvents = (function () {
 
                 singleCardBtns[1].addEventListener("click", function(e) {
                     e.preventDefault();
-                   singleEditForm.classList.toggle('active');
+                   singleEditForm.classList.toggle('secondary-active');
 
                    // form submit here
 
                 });
 
                 // delete event here
-
+                singleCardBtns[2].addEventListener("click", function(e) {
+                    e.preventDefault();
+                })
 
                 // toggle event here
 

@@ -55,7 +55,7 @@ body, .app-header {
     justify-content: center;
 }
 
-.card, .task-header-text {
+.card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,11 +65,21 @@ body, .app-header {
 
 }
 
-.task-card {
+.task-header-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.task-card-container {
     display: flex;
     align-items: center;
     gap: 25px;
     padding-bottom: 15px;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .card-header {
@@ -84,7 +94,13 @@ body, .app-header {
 .project-btns, .task-btns {
     padding: 5px;
     display: flex;
-    gap: 10px;
+    gap: 5px;
+}
+
+.task-btns {
+    grid-column: 2 / span 2;
+    align-items: center;
+    justify-content: center;
 }
 
 .add-task-form, .edit-task-form {
@@ -93,4 +109,3 @@ body, .app-header {
     gap: 10px;
 }
 
-.task-card-container

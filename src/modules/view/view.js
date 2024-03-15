@@ -121,8 +121,21 @@ export const config = (function () {
                     `;
                 
                 // edit form here
+                let editTaskFormContainer = uiMethods.createContainer('edit-task-form-container',`edit-task-form-container-${subIndex}`);
+                editTaskFormContainer.innerHTML = `
+                <form class='edit-task-form' id='edit-task-form-${subIndex}'>
+                <input type='text' maxlength='35' placeholder=' -- New Task Title -- ' id='edit-task-title-${subIndex}'>
+                <input type='text' maxlength='35' placeholder=' -- New Task Description -- ' id='edit-task-description-${subIndex}'>
+                <input type='text' maxlength='35' placeholder=' -- mm/dd/yy -- ' id='edit-task-dueDate-${subIndex}'>
+                <input type='text' maxlength='35' placeholder=' -- New Task Priority -- ' id='edit-task-priority-${subIndex}'>
+        
+                <button type='submit' id='edit-task-submit-${subIndex}'>Create Project</button>
+                
+                </form>
+                `
 
                 tasks.appendChild(childHeaderContainer);
+                tasks.appendChild(editTaskFormContainer);
             })
 
             card.appendChild(tasks);

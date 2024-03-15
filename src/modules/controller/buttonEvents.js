@@ -78,7 +78,41 @@ export var btnEvents = (function () {
 
             // sub cards inside of tasks-${index} container
             let taskCards = Array.from(item.children[2].children);
-            console.log(taskCards);
+            taskCards.forEach(function(subItem,subIndex) {
+                const taskCardEls = Array.from(subItem.children);
+
+                // 0 - task card (title, dueDate, buttons-div ), 1 - details, 2 - edit task form
+                console.log(taskCardEls);
+                const singleCard = taskCardEls[0];
+                const singleDetails = taskCardEls[1];
+                const singleEditForm = taskCardEls[2];
+
+                const singleCardEls = Array.from(singleCard.children);
+                const singleCardBtns = Array.from(singleCardEls[2].children);
+
+                // console.log(singleCardBtns);
+
+                // 0 - details, 1 - edit, 2 - delete, 3 - toggle
+                singleCardBtns[0].addEventListener("click", function(e) {
+                    e.preventDefault();
+                    singleDetails.classList.toggle('secondary-active');
+
+                });
+
+                singleCardBtns[1].addEventListener("click", function(e) {
+                    e.preventDefault();
+                   singleEditForm.classList.toggle('active');
+
+                   // form submit here
+
+                });
+
+                // delete event here
+
+
+                // toggle event here
+
+            })
             
         })
     }

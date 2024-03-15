@@ -9,7 +9,7 @@
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mizakson",
   "license": "ISC",
   "devDependencies": {
     "gh-pages": "^6.1.1",

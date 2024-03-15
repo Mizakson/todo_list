@@ -76,6 +76,9 @@ export var btnEvents = (function () {
 
             })
 
+            // sub cards inside of tasks-${index} container
+            let taskCards = Array.from(item.children[2].children);
+            console.log(taskCards);
             
         })
     }

@@ -1,0 +1,111 @@
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.add-task-form-container, .tasks, .edit-task-form-container, .task-details-container {
+    display: none;
+}
+
+.active {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.secondary-active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.completed {
+    background-color: lightgreen;
+}
+
+button, input {
+    font-family: inherit;
+}
+
+body, .app-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-header {
+    padding-bottom: 65px;
+}
+
+.add-project-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.project-form-container {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    padding-bottom: 50px;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 15px;
+
+}
+
+.task-header-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.task-card-container {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 15px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.project-btns, .task-btns {
+    padding: 5px;
+    display: flex;
+    gap: 5px;
+}
+
+.task-btns {
+    grid-column: 2 / span 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-task-form, .edit-task-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+

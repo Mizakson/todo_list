@@ -106,11 +106,11 @@ export const config = (function () {
 
             // render tasks in each project
             parsedProj.items.forEach(function(subItem,subIndex) {
-                let childHeaderContainer = uiMethods.createContainer('task-card',`task-card-${subIndex}`);
+                let childHeaderContainer = uiMethods.createContainer('task-card-container',`task-card-${subIndex}-container`);
                 childHeaderContainer.innerHTML = `
                     <div class='task-card' id='task-card-${subIndex}'>
                         <h4 class='task-title-text'>${subItem['title']}</h4>
-                        <p class='task-'>${subItem['dueDate']}</p>
+                        <p class='task-dueDate'>${subItem['dueDate']}</p>
                         <div class='task-btns'>
                             <button class='task-details'>Details</button>
                             <button class='edit-task'>Edit Task</button>
@@ -134,8 +134,16 @@ export const config = (function () {
                 </form>
                 `
 
+                // task details display
+                let childInfoContainer = uiMethods.createContainer('task-details-container',`task-details-container-${subIndex}`);
+                childInfoContainer.innerHTML = `
+                <p class='task-description'>${subItem['description']}</p>
+                <p class='task-priority'>${subItem['priority']}</p>
+                `
+                childHeaderContainer.appendChild(childInfoContainer);
+                childHeaderContainer.appendChild(editTaskFormContainer);
                 tasks.appendChild(childHeaderContainer);
-                tasks.appendChild(editTaskFormContainer);
+                
             })
 
             card.appendChild(tasks);

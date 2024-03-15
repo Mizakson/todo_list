@@ -131,7 +131,7 @@ export const config = (function () {
                 <input type='text' maxlength='35' placeholder=' -- mm/dd/yy -- ' id='edit-task-dueDate-${subIndex}'>
                 <input type='text' maxlength='35' placeholder=' -- New Task Priority -- ' id='edit-task-priority-${subIndex}'>
         
-                <button type='submit' id='edit-task-submit-${subIndex}'>Create Project</button>
+                <button type='submit' id='edit-task-submit-${subIndex}'>Save Changes</button>
                 
                 </form>
                 `

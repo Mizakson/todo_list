@@ -18,6 +18,8 @@ export const storageMethods = (function () {
             let defaultTask = new Task('default task','edit me...','12/31/24','low');
             newProj.addTask(defaultTask);
 
+            arr.push(newProj);
+
             let str = JSON.stringify(newProj);
             localStorage.setItem(`${newTitle}`, str);
 
@@ -48,6 +50,11 @@ export const storageMethods = (function () {
 
     }
 
-    return { saveToStorage, updateTaskStorage };
+    const updateTaskValues = (index, subIndex, newTask) => {
+
+
+    }
+
+    return { saveToStorage, updateTaskStorage, updateTaskValues };
 
 })();

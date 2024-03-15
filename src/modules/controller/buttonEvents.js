@@ -19,7 +19,7 @@ export var btnEvents = (function () {
 
             // displays all tasks
             btns[0].addEventListener("click", function() {
-                console.log(projectEls);
+                // console.log(projectEls);
                 projectEls[2].classList.toggle('active');
             })
 
@@ -27,7 +27,7 @@ export var btnEvents = (function () {
             btns[1].addEventListener("click", function() {
                 projectEls[1].classList.toggle('active');
                 let taskForm = projectEls[1].children[0];
-                console.log(taskForm.children);
+                // console.log(taskForm.children);
                 
                 taskForm.addEventListener("submit", function(e) {
                     e.preventDefault();
@@ -45,7 +45,7 @@ export var btnEvents = (function () {
 
                     config.clearDisplay();
                     config.nonEmptyRender();
-                    btnEvents.projectBtnEvents();
+                    projectBtnEvents();
                 })
 
             })
@@ -80,7 +80,6 @@ export var btnEvents = (function () {
             let taskCards = Array.from(item.children[2].children);
             taskCards.forEach(function(subItem,subIndex) {
                 const taskCardEls = Array.from(subItem.children);
-
                 // 0 - task card (title, dueDate, buttons-div ), 1 - details, 2 - edit task form
                 
                 const singleCard = taskCardEls[0];
@@ -92,7 +91,11 @@ export var btnEvents = (function () {
 
                 let childTaskName = singleCardEls[0].children[0].innerText;
 
-                // console.log(singleCardBtns);
+                let editFormEl = Array.from(singleEditForm.children)[0];
+                let editFormInputs = Array.from(editFormEl.children);
+                
+
+                // console.log(editFormInputs);
 
                 // 0 - details, 1 - edit, 2 - delete, 3 - toggle
                 singleCardBtns[0].addEventListener("click", function(e) {
@@ -104,17 +107,74 @@ export var btnEvents = (function () {
                 singleCardBtns[1].addEventListener("click", function(e) {
                     e.preventDefault();
                    singleEditForm.classList.toggle('secondary-active');
+                   let name = header[0].innerText;
+                    console.log(name)
+                    // console.log(subIndex);
 
                    // form submit here
+                   editFormEl.addEventListener("submit", function(e) {
+                    // 0 - title, 1 - description, 2 - dueDate, 3 - priority
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    
+                    let prevStr = localStorage.getItem(name);
+                    let prevItem = JSON.parse(prevStr);
+                    Object.setPrototypeOf(prevItem,Project);
 
+                    let title = editFormInputs[0].value;
+                    let desc = editFormInputs[1].value;
+                    let date = editFormInputs[2].value;
+                    let prio = editFormInputs[3].value;
+
+                    let updatedTask = new Task(title,desc,date,prio);
+                  
+                    arr[index].items.splice(subIndex,1,updatedTask);
+
+                    let updatedProj = arr[index];
+                    let updatedStr = JSON.stringify(arr[index]);
+                    localStorage.setItem(name,updatedStr);
+
+                    config.clearDisplay();
+                    config.nonEmptyRender();
+                    projectBtnEvents();
+
+                   })
+                    
                 });
 
                 // delete event here
                 singleCardBtns[2].addEventListener("click", function(e) {
                     e.preventDefault();
+                    
+                    let currentItem = arr[index];
+                    arr[index].items.splice(subIndex,1);
+
+                    let newStr = JSON.stringify(currentItem);
+                    localStorage.setItem(currentItem['title'],newStr);
+
+                    config.clearDisplay();
+                    config.nonEmptyRender();
+                    projectBtnEvents();   
+
                 })
 
                 // toggle event here
+                singleCardBtns[3].addEventListener("click",function(e) {
+                    e.preventDefault();
+                    let name = header[0].innerText;
+                    let currentItem = arr[index];
+                    currentItem.items[subIndex]['status'] = !currentItem.items[subIndex]['status'];
+
+                    let newStr = JSON.stringify(currentItem);
+                    localStorage.setItem(currentItem['title'],newStr);
+
+                    console.log(`Project-${name} -- Task-${childTaskName}: status -> ${currentItem.items[subIndex]['status']}`);
+
+                    config.clearDisplay();
+                    config.nonEmptyRender();
+                    projectBtnEvents(); 
+
+                })
 
             })
             

@@ -88,7 +88,7 @@ export var btnEvents = (function () {
                 const singleEditForm = taskCardEls[2];
 
                 const singleCardEls = Array.from(singleCard.children);
-                const singleCardBtns = Array.from(singleCardEls[2].children);
+                const singleCardBtns = Array.from(singleCardEls[1].children);
 
                 // console.log(singleCardBtns);
 

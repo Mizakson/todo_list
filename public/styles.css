@@ -55,7 +55,7 @@ body, .app-header {
     justify-content: center;
 }
 
-.card {
+.card, .task-header-text {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,6 +63,13 @@ body, .app-header {
     gap: 15px;
     padding: 15px;
 
+}
+
+.task-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-bottom: 15px;
 }
 
 .card-header {
@@ -74,8 +81,10 @@ body, .app-header {
     padding: 10px;
 }
 
-.project-btns {
+.project-btns, .task-btns {
     padding: 5px;
+    display: flex;
+    gap: 10px;
 }
 
 .add-task-form, .edit-task-form {
@@ -83,3 +92,5 @@ body, .app-header {
     align-items: center;
     gap: 10px;
 }
+
+.task-card-container

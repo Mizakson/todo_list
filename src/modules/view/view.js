@@ -109,8 +109,10 @@ export const config = (function () {
                 let childHeaderContainer = uiMethods.createContainer('task-card-container',`task-card-${subIndex}-container`);
                 childHeaderContainer.innerHTML = `
                     <div class='task-card' id='task-card-${subIndex}'>
+                        <div class='task-header-text'>
                         <h4 class='task-title-text'>${subItem['title']}</h4>
-                        <p class='task-dueDate'>${subItem['dueDate']}</p>
+                        <p class='task-dueDate'>${subItem['dueDate']}</p> 
+                        </div>
                         <div class='task-btns'>
                             <button class='task-details'>Details</button>
                             <button class='edit-task'>Edit Task</button>

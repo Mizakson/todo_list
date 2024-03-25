@@ -7,3 +7,4 @@ In this project I learned about:
 - The importance of using basic data structures (Objects, Arrays), and the ability to perform basic operations on them
 - How to use the localStorage API, JSON to store application data
 - How to use factories in combination with classes to further organize projects
+- What the MVC (Model, View, Controller) pattern is, while also using a basic implementation for the project
